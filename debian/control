@@ -17,7 +17,7 @@ Package: breeze
 Section: utils
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: Standard KDE cursor theme.
- This is the standard KDE cursor theme.
+Description: Default Plasma cursor theme.
+ This is the default cursor theme for the KDE Plasma desktop.
  .
  This package is part of the KDE base workspace module.
