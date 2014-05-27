@@ -13,9 +13,9 @@ Homepage: https://projects.kde.org/projects/kde/workspace/breeze
 Vcs-Browser: https://bazaar.launchpad.net/~kubuntu-packagers/kubuntu-packaging/breeze
 Vcs-Bzr: https://code.launchpad.net/~kubuntu-packagers/kubuntu-packaging/breeze
 
-Package: breeze
-Section: utils
-Architecture: any
+Package: breeze-cursor-theme
+Section: x11
+Architecture: all
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Default Plasma cursor theme.
  This is the default cursor theme for the KDE Plasma desktop.
