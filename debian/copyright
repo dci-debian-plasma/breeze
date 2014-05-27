@@ -4,7 +4,7 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/plasma/breeze
 
 Files: *
        debian/*
-Copyright: KDE
+Copyright: 2014 Ken Vermette <vermette@gmail.com>
            2014 Scarlett Clark <scarlett@scarlettgatelyclark.com>
 License: GPL-2.0+
  This package is free software; you can redistribute it and/or modify
