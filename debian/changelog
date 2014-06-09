@@ -6,4 +6,8 @@ breeze (4:4.97.0-0ubuntu1) UNRELEASED; urgency=medium
   [ Jonathan Riddell ]
   * New upstream beta release
 
+  [ Scarlett Clark ]
+  * Fix build depends
+  * Changed arch to any due to added binary. 
+
  -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 09 Jun 2014 10:23:56 +0100

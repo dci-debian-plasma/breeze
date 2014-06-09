@@ -5,6 +5,8 @@ XSBC-Original-Maintainer: Scarlett Clark <scarlett@scarlettgatelyclark.com>
 Build-Depends: cmake,
                debhelper (>= 9.0.0),
                extra-cmake-modules (>= 0.0.14),
+               libkf5config-dev (>= 4.100.0),
+               libkf5coreaddons-dev (>= 4.100.0),
                pkg-kde-tools,
                qtbase5-dev
 Standards-Version: 3.9.5
@@ -15,7 +17,7 @@ Vcs-Bzr: https://code.launchpad.net/~kubuntu-packagers/kubuntu-packaging/breeze
 
 Package: breeze-cursor-theme
 Section: x11
-Architecture: all
+Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Default Plasma cursor theme.
  This is the default cursor theme for the KDE Plasma desktop.
