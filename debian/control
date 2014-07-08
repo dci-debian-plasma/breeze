@@ -15,11 +15,38 @@ Homepage: https://projects.kde.org/projects/kde/workspace/breeze
 Vcs-Browser: https://bazaar.launchpad.net/~kubuntu-packagers/kubuntu-packaging/breeze
 Vcs-Bzr: https://code.launchpad.net/~kubuntu-packagers/kubuntu-packaging/breeze
 
+Package: breeze
+Section: x11
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Default Plasma theme.
+ This is the default theme for the KDE Plasma desktop.
+ .
+ This package is part of the KDE base workspace module.
+
 Package: breeze-cursor-theme
 Section: x11
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Default Plasma cursor theme.
  This is the default cursor theme for the KDE Plasma desktop.
+ .
+ This package is part of the KDE base workspace module.
+
+Package: breeze-icon-theme
+Section: x11
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Default Plasma icon theme.
+ This is the default icon theme for the KDE Plasma desktop.
+ .
+ This package is part of the KDE base workspace module.
+
+Package: breeze-wallpaper-theme
+Section: x11
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Default Plasma wallpaper theme.
+ This is the default wallpaper theme for the KDE Plasma desktop.
  .
  This package is part of the KDE base workspace module.

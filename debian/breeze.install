@@ -1,0 +1,7 @@
+usr/share/kwin
+usr/share/kconf_update
+usr/share/QtCurve
+usr/lib/*/kconf_update_bin
+usr/lib/*/qt5
+usr/share/kservices5
+usr/share/color-schemes
