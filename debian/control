@@ -16,11 +16,17 @@ Vcs-Browser: https://bazaar.launchpad.net/~kubuntu-packagers/kubuntu-packaging/b
 Vcs-Bzr: https://code.launchpad.net/~kubuntu-packagers/kubuntu-packaging/breeze
 
 Package: breeze
-Section: x11
+Section: metapackages
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: Default Plasma theme.
+Depends: breeze-cursor-theme (= ${binary:Version}), 
+         breeze-icon-theme (= ${binary:Version}),
+         kwin-style-theme (= ${binary:Version}),
+         kde-style-breeze (= ${binary:Version}),
+         ${misc:Depends}, ${shlibs:Depends}
+Description: Default Plasma theme (meta-package).
  This is the default theme for the KDE Plasma desktop.
+ This package includes wallpapers, icons, cursors, and styles
+ for the Plasma 5 desktop.
  .
  This package is part of the KDE base workspace module.
 
@@ -29,7 +35,7 @@ Section: x11
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Default Plasma cursor theme.
- This is the default cursor theme for the KDE Plasma desktop.
+ This is the default cursor theme for the KDE Plasma 5 desktop.
  .
  This package is part of the KDE base workspace module.
 
@@ -38,15 +44,24 @@ Section: x11
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Default Plasma icon theme.
- This is the default icon theme for the KDE Plasma desktop.
+ This is the default icon theme for the KDE Plasma 5 desktop.
  .
  This package is part of the KDE base workspace module.
 
-Package: breeze-wallpaper-theme
+Package: kwin-style-theme
 Section: x11
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: Default Plasma wallpaper theme.
- This is the default wallpaper theme for the KDE Plasma desktop.
+Description: Kwin Style theme.
+ This is a Kwin style theme for the KDE Plasma 5 desktop.
+ .
+ This package is part of the KDE base workspace module.
+
+Package: kde-style-breeze
+Section: x11
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Kwin Style theme.
+ This is a Kwin style theme for the KDE Plasma 5 desktop.
  .
  This package is part of the KDE base workspace module.
