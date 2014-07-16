@@ -1,2 +1,4 @@
 version=3
-ftp://ftp.kde.org/pub/kde/unstable/plasma/([\d\.]+)/src/breeze-(.*)\.tar\.xz
+http://download.kde.org/unstable/plasma/([\d\.]+)/src/breeze-(.*)\.tar\.xz
+
+http://download.kde.org/stable/plasma/([\d\.]+)/breeze-(.*)\.tar\.xz
