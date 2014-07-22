@@ -41,7 +41,7 @@ Description: Default Plasma cursor theme.
 
 Package: breeze-icon-theme
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}, oxygen-icon-theme
 Description: Default Plasma icon theme.
  This is the default icon theme for the KDE Plasma 5 desktop.
  .
