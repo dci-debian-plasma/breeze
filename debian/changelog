@@ -10,6 +10,11 @@ breeze (4:5.0.0-0ubuntu1) UNRELEASED; urgency=medium
   * breeze-icon-theme now depends oxygen-icon-theme. Latter is used as a
     fallback, since breeze on its own does not cover as many icons as oxygen
     does.
+  * breeze now depends kde-style-qtcurve5 as it is the style engine of
+    choice
+  * breeze now recommends kde-style-qtcurve4 as kde4breeze migrator will try
+    to enable theme convergence between qt5 and qt4 by using qtcurve, to
+    facilitate this we need the qt4 theme on installations
 
  -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 10 Jul 2014 20:01:37 +0200
 
