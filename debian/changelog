@@ -1,4 +1,4 @@
-breeze (4:5.0.0-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.0.1-0ubuntu1) UNRELEASED; urgency=medium
 
   [ Jonathan Riddell ]
   * New upstream release
@@ -16,7 +16,10 @@ breeze (4:5.0.0-0ubuntu1) UNRELEASED; urgency=medium
     to enable theme convergence between qt5 and qt4 by using qtcurve, to
     facilitate this we need the qt4 theme on installations
 
- -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 10 Jul 2014 20:01:37 +0200
+  [ Jonathan Riddell ]
+  * New upstream bugfix release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 10 Aug 2014 15:40:28 +0200
 
 breeze (4:4.98.0-0ubuntu1) utopic; urgency=medium
 
