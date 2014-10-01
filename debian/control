@@ -26,8 +26,8 @@ Architecture: any
 Depends: breeze-cursor-theme (= ${binary:Version}),
          breeze-icon-theme (= ${binary:Version}),
          kde-style-breeze (= ${binary:Version}),
-         kde-style-qtcurve5,
          kwin-style-breeze (= ${binary:Version}),
+         qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
 Recommends: kde-style-qtcurve4
@@ -68,5 +68,15 @@ Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Widget style for Qt and KDE Software
  This is the default widget style for KDE's Plasma desktop.
+ .
+ This package is part of the Breeze theme module.
+
+Package: qml-module-qtquick-controls-styles-breeze
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, qml-module-qtquick-controls
+Breaks: breeze (<< 4:5.0.95)
+Replaces: breeze (<< 4:5.0.95)
+Description: QtQuick style for Qt and KDE Software
+ This is the default QtQuick Controls style for KDE's Plasma desktop.
  .
  This package is part of the Breeze theme module.

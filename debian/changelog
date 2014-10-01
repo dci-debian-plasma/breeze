@@ -1,6 +1,10 @@
 breeze (4:5.0.95-0ubuntu1) UNRELEASED; urgency=medium
 
   * New upstream beta release
+  * Remove depeneds on QtCurve, Breeze is now a real theme of its own
+  * New package qml-module-qtquick-controls-styles-breeze for
+    QtQuick Controls theme
+  * Add translations to kde-style-breeze
 
  -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 01 Oct 2014 15:25:34 +0200
 
