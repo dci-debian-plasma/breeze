@@ -26,6 +26,7 @@ Architecture: any
 Depends: breeze-cursor-theme (= ${binary:Version}),
          breeze-icon-theme (= ${binary:Version}),
          kde-style-breeze (= ${binary:Version}),
+         kde-style-breeze-qt4,
          kwin-style-breeze (= ${binary:Version}),
          qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
          ${misc:Depends},

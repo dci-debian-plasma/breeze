@@ -5,6 +5,7 @@ breeze (4:5.0.95-0ubuntu1) UNRELEASED; urgency=medium
   * New package qml-module-qtquick-controls-styles-breeze for
     QtQuick Controls theme
   * Add translations to kde-style-breeze
+  * breeze metapackage depends on Qt 4 build kde-style-breeze-qt4
 
  -- Jonathan Riddell <jriddell@ubuntu.com>  Wed, 01 Oct 2014 15:25:34 +0200
 
