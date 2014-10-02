@@ -13,7 +13,8 @@ Build-Depends: cmake,
                libkf5windowsystem-dev (>= 5.2.0),
                libqt5x11extras5-dev,
                pkg-kde-tools (>= 0.15.15ubuntu1~),
-               qtbase5-dev
+               qtbase5-dev,
+               pkg-config
 Standards-Version: 3.9.5
 Section: kde
 Homepage: https://projects.kde.org/projects/kde/workspace/breeze
