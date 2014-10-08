@@ -21,7 +21,6 @@ Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-kde/plasma/breeze.git
 Vcs-Git: git://anonscm.debian.org/pkg-kde/plasma/breeze.git
 
 Package: breeze
-Section: metapackages
 Architecture: any
 Depends: breeze-cursor-theme (= ${binary:Version}),
          breeze-icon-theme (= ${binary:Version}),
