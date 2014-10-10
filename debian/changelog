@@ -11,10 +11,15 @@ breeze (4:5.1.0-0ubuntu1) UNRELEASED; urgency=medium
 
   [ Harald Sitter ]
   * Breeze is not a metapackage.
-    - It was incorrectly turned into one when splitting the various theme components.
+    - It was incorrectly turned into one when splitting the various
+      theme components.
 
   [ Jonathan Riddell ]
   * New upstream release
+
+  [ Scarlett Clark ]
+  * Add new breeze-dark icon theme to install file. 
+  * Minor changelog adjustment to rid lintian error.
 
  -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 09 Oct 2014 15:46:05 +0200
 
