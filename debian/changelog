@@ -8,7 +8,6 @@ breeze (4:5.1.0.1-0ubuntu1) UNRELEASED; urgency=medium
   * Add translations to kde-style-breeze
   * breeze metapackage depends on Qt 4 build kde-style-breeze-qt4
   * Build-dep on pkg-config
-  * Add upstream_rename-breeze-dark-colours.diff
 
   [ Harald Sitter ]
   * Breeze is not a metapackage.
