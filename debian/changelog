@@ -1,24 +1,22 @@
 breeze (4:5.1.0-0ubuntu1) UNRELEASED; urgency=medium
 
   [ Jonathan Riddell ]
-  * New upstream beta release
+  * New upstream release
   * Remove depeneds on QtCurve, Breeze is now a real theme of its own
   * New package qml-module-qtquick-controls-styles-breeze for
     QtQuick Controls theme
   * Add translations to kde-style-breeze
   * breeze metapackage depends on Qt 4 build kde-style-breeze-qt4
   * Build-dep on pkg-config
+  * Add upstream_rename-breeze-dark-colours.diff
 
   [ Harald Sitter ]
   * Breeze is not a metapackage.
     - It was incorrectly turned into one when splitting the various
       theme components.
 
-  [ Jonathan Riddell ]
-  * New upstream release
-
   [ Scarlett Clark ]
-  * Add new breeze-dark icon theme to install file. 
+  * Add new breeze-dark icon theme to install file.
   * Minor changelog adjustment to rid lintian error.
 
  -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 09 Oct 2014 15:46:05 +0200
