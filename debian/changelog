@@ -19,9 +19,6 @@ breeze (4:5.1.0.1-0ubuntu1) UNRELEASED; urgency=medium
   * Add new breeze-dark icon theme to install file.
   * Minor changelog adjustment to rid lintian error.
 
-  [ Jonathan Riddell ]
-  * New upstream release with fixed tar
-
  -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 14 Oct 2014 13:47:05 +0200
 
 breeze (4:5.0.2-0ubuntu1) utopic; urgency=medium
