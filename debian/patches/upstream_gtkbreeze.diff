@@ -17,59 +17,19 @@ index ff891a9..4cb1ba9 100644
 +add_subdirectory(gtkbreeze)
 diff --git a/misc/gtkbreeze/CMakeLists.txt b/misc/gtkbreeze/CMakeLists.txt
 new file mode 100644
-index 0000000..82bd68f
+index 0000000..2dfc439
 --- /dev/null
 +++ b/misc/gtkbreeze/CMakeLists.txt
-@@ -0,0 +1,49 @@
-+project(gtkbreeze)
-+
-+find_package(ECM 0.0.13 REQUIRED NO_MODULE)
-+
-+set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
-+
-+include(KDEInstallDirs)
-+include(KDEFrameworkCompilerSettings)
-+include(KDECMakeSettings)
-+
+@@ -0,0 +1,9 @@
 +find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
 +find_package(KF5 REQUIRED COMPONENTS CoreAddons Config)
 +
-+include(KDEInstallDirs)
-+include(KDECMakeSettings)
-+include(KDECompilerSettings)
-+include(ECMPackageConfigHelpers)
-+include(ECMMarkNonGuiExecutable)
-+include(CMakePackageConfigHelpers)
-+include(WriteBasicConfigVersionFile)
-+include(CheckIncludeFiles)
-+include(FeatureSummary)
-+include(KDEFrameworkCompilerSettings)
++add_executable(gtkbreeze main.cpp)
 +
-+add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0)
-+
-+add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-+add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
-+
-+remove_definitions(-DQT_NO_CAST_FROM_ASCII -DQT_STRICT_ITERATORS -DQT_NO_CAST_FROM_BYTEARRAY -DQT_NO_KEYWORDS)
-+
-+# In this CMakeLists.txt we define which files
-+# are used to compile the application
-+set(gtkbreeze_SRCS
-+   main.cpp
-+ )
-+
-+# Set the name of the application
-+add_executable(gtkbreeze ${gtkbreeze_SRCS})
-+
-+# Select which libraries we need to link to
 +target_link_libraries(gtkbreeze Qt5::Widgets KF5::CoreAddons KF5::ConfigCore)
 +
-+# Tell cmake to install the application binary
 +install(TARGETS gtkbreeze DESTINATION ${LIB_INSTALL_DIR}/kconf_update_bin/)
 +install(FILES gtkbreeze.upd DESTINATION ${KCONF_UPDATE_INSTALL_DIR})
-+
-+# Install the color scheme?
-+
 diff --git a/misc/gtkbreeze/gtkbreeze.upd b/misc/gtkbreeze/gtkbreeze.upd
 new file mode 100644
 index 0000000..165308b
@@ -80,10 +40,10 @@ index 0000000..165308b
 +Script=gtkbreeze
 diff --git a/misc/gtkbreeze/main.cpp b/misc/gtkbreeze/main.cpp
 new file mode 100644
-index 0000000..dd108a7
+index 0000000..6d250e4
 --- /dev/null
 +++ b/misc/gtkbreeze/main.cpp
-@@ -0,0 +1,163 @@
+@@ -0,0 +1,192 @@
 +/*
 + Copyright 2014 Jonathan Riddell <jriddell@ubuntu.com>
 +
@@ -111,6 +71,7 @@ index 0000000..dd108a7
 +#include <QFile>
 +#include <QLoggingCategory>
 +#include <QSettings>
++#include <QDir>
 +
 +Q_DECLARE_LOGGING_CATEGORY(GTKBREEZE)
 +Q_LOGGING_CATEGORY(GTKBREEZE, "gtkbreeze")
@@ -122,8 +83,8 @@ index 0000000..dd108a7
 + */
 +QString isGtkThemeInstalled(QString themeName, QString settingsFile)
 +{
-+    foreach(const QString& themesDir, QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "themes", QStandardPaths::LocateDirectory)) {
-+        if (QFile::exists(themesDir+ "/" + themeName + "/" + settingsFile)) {
++    foreach (const QString& themesDir, QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "themes", QStandardPaths::LocateDirectory)) {
++        if (QFile::exists(themesDir + QDir::separator() + themeName + QDir::separator() + settingsFile)) {
 +            return themesDir + "/" + themeName;
 +        }
 +    }
@@ -138,7 +99,7 @@ index 0000000..dd108a7
 + */
 +QString isGtkThemeSetToOxygen(QString gtkSettingsFile, QString settingsKey)
 +{
-+    QString gtkSettingsPath = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/" + gtkSettingsFile;
++    QString gtkSettingsPath = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + QDir::separator() + gtkSettingsFile;
 +    qCDebug(GTKBREEZE) << "looking for" << gtkSettingsPath;
 +    if (QFile::exists(gtkSettingsPath)) {
 +        qCDebug(GTKBREEZE) << "found settings file" << gtkSettingsPath;
@@ -146,8 +107,8 @@ index 0000000..dd108a7
 +        if (!settingsKey.isNull()) {
 +            gtkrcSettings.beginGroup(settingsKey);
 +        }
-+        if (gtkrcSettings.value("gtk-theme-name") != "oxygen-gtk") {
-+            qCDebug(GTKBREEZE) << "gtk settings file " + gtkSettingsFile + " already exist and is not using oxygen, will not change";
++        if (gtkrcSettings.value("gtk-theme-name") != QStringLiteral("oxygen-gtk")) {
++            qCDebug(GTKBREEZE) << "gtk settings file " + gtkSettingsFile + " already exists and is not using oxygen, will not change";
 +            return QString();
 +        }
 +    }
@@ -157,93 +118,121 @@ index 0000000..dd108a7
 +/*
 + * Set gtk2 theme if no theme is set or if oxygen is set and gtk theme is installed
 + */
-+void setGtk2()
++int setGtk2()
 +{
-+    QString gtk2Theme = "Orion"; // Orion looks kindae like breeze
-+    QString gtk2ThemeSettings = "gtk-2.0/gtkrc"; // file to check for
-+    QString gtkThemeDirectory = isGtkThemeInstalled(gtk2Theme, gtk2ThemeSettings);
++    const QString gtk2Theme = QStringLiteral("Orion"); // Orion looks kindae like breeze
++    const QString gtk2ThemeSettings = QStringLiteral("gtk-2.0/gtkrc"); // system installed file to check for
++
++    const QString gtkThemeDirectory = isGtkThemeInstalled(gtk2Theme, gtk2ThemeSettings);
 +
 +    if (gtkThemeDirectory == 0) {
 +        qCDebug(GTKBREEZE) << "not found, quitting";
-+        return;
++        return 0;
 +    }
 +    qCDebug(GTKBREEZE) << "found gtktheme: " << gtkThemeDirectory;
 +
 +    QString gtkrc2path = isGtkThemeSetToOxygen(".gtkrc-2.0", QString());
-+    if ( gtkrc2path.isEmpty() ) {
++    if (gtkrc2path.isEmpty()) {
 +        qCDebug(GTKBREEZE) << "gtkrc2 already exists and is not using oxygen, quitting";
-+        return;
++        return 0;
 +    }
 +
 +    qCDebug(GTKBREEZE) << "no gtkrc2 file or oxygen being used, setting to new theme";
 +    QFile gtkrc2writer(gtkrc2path);
-+    gtkrc2writer.open(QIODevice::WriteOnly | QIODevice::Text);
++    bool opened = gtkrc2writer.open(QIODevice::WriteOnly | QIODevice::Text);
++    if (!opened) {
++        qCWarning(GTKBREEZE) << "failed to open " << gtkrc2path;
++        return 1;
++    }
 +    QTextStream out(&gtkrc2writer);
-+    out << "include \"" << gtkThemeDirectory << "/gtk-2.0/gtkrc\"\n";
-+    out << "style \"user-font\"\n";
-+    out << "{\n";
-+    out << "    font_name=\"Oxygen-Sans Sans-Book\"\n";
-+    out << "}\n";
-+    out << "widget_class \"*\" style \"user-font\"\n";
-+    out << "gtk-font-name=\"Oxygen-Sans Sans-Book 10\"\n"; // matches plasma-workspace:startkde/startkde.cmake
-+    out << "gtk-theme-name=\"Orion\"\n";
-+    out << "gtk-icon-theme-name=\"oxygen\"\n"; // breeze icons don't seem to work with gtk
-+    out << "gtk-fallback-icon-theme=\"gnome\"\n";
-+    out << "gtk-toolbar-style=GTK_TOOLBAR_ICONS\n";
-+    out << "gtk-menu-images=1\n";
-+    out << "gtk-button-images=1\n";
-+
-+    gtkrc2writer.close();
++    out << QStringLiteral("include \"") << gtkThemeDirectory << QStringLiteral("/gtk-2.0/gtkrc\"\n");
++    out << QStringLiteral("style \"user-font\"\n");
++    out << QStringLiteral("{\n");
++    out << QStringLiteral("    font_name=\"Oxygen-Sans Sans-Book\"\n");
++    out << QStringLiteral("}\n");
++    out << QStringLiteral("widget_class \"*\" style \"user-font\"\n");
++    out << QStringLiteral("gtk-font-name=\"Oxygen-Sans Sans-Book 10\"\n"); // matches plasma-workspace:startkde/startkde.cmake
++    out << QStringLiteral("gtk-theme-name=\"Orion\"\n");
++    out << QStringLiteral("gtk-icon-theme-name=\"oxygen\"\n"); // breeze icons don't seem to work with gtk
++    out << QStringLiteral("gtk-fallback-icon-theme=\"gnome\"\n");
++    out << QStringLiteral("gtk-toolbar-style=GTK_TOOLBAR_ICONS\n");
++    out << QStringLiteral("gtk-menu-images=1\n");
++    out << QStringLiteral("gtk-button-images=1\n");
 +    qCDebug(GTKBREEZE) << "gtk2rc written";
++    return 0;
 +}
 +
 +/*
 + * Set gtk3 theme if no theme is set or if oxygen is set and gtk theme is installed
 + */
-+void setGtk3()
++int setGtk3()
 +{
 +    qCDebug(GTKBREEZE) << "setGtk3()";
 +
-+    QString gtk3Theme = "Orion"; // Orion looks kindae like breeze
-+    QString gtk3ThemeSettings = "gtk-3.0/settings.ini"; // Orion looks kindae like breeze
++    const QString gtk3Theme = QStringLiteral("Orion"); // Orion looks kindae like breeze
++    const QString gtk3ThemeSettings = QStringLiteral("gtk-3.0/settings.ini"); // check for installed /usr/share/themes/Orion/gtk-3.0/settings.ini
 +
-+    QString gtkThemeDirectory = isGtkThemeInstalled(gtk3Theme, gtk3ThemeSettings);
++    const QString gtkThemeDirectory = isGtkThemeInstalled(gtk3Theme, gtk3ThemeSettings);
 +    if (gtkThemeDirectory == 0) {
 +        qCDebug(GTKBREEZE) << "not found, quitting";
-+        return;
++        return 0;
 +    }
 +    qCDebug(GTKBREEZE) << "found gtk3theme:" << gtkThemeDirectory;
 +
 +    QString gtkrc3path = isGtkThemeSetToOxygen(".config/gtk-3.0/settings.ini", "Settings");
 +    if ( gtkrc3path.isEmpty() ) {
 +        qCDebug(GTKBREEZE) << "gtkrc3 already exists and is not using oxygen, quitting";
-+        return;
++        return 0;
 +    }
 +
 +    qCDebug(GTKBREEZE) << "no gtkrc3 file or oxygen being used, setting to new theme";
 +    QFile gtkrc3writer(gtkrc3path);
-+    gtkrc3writer.open(QIODevice::WriteOnly | QIODevice::Text);
++    bool opened = gtkrc3writer.open(QIODevice::WriteOnly | QIODevice::Text);
++    if (!opened) {
++        qCWarning(GTKBREEZE) << "failed to open " << gtkrc3path;
++        return 1;
++    }
 +    QTextStream out(&gtkrc3writer);
-+    out << "[Settings]\n";
-+    out << "gtk-font-name=Ubuntu 10\n"; // matches plasma-workspace:startkde/startkde.cmake
-+    out << "gtk-theme-name="+gtk3Theme+"\n";
-+    out << "gtk-icon-theme-name=oxygen\n"; // breeze icons don't seem to work with gtk
-+    out << "gtk-fallback-icon-theme=gnome\n";
-+    out << "gtk-toolbar-style=GTK_TOOLBAR_ICONS\n";
-+    out << "gtk-menu-images=1\n";
-+    out << "gtk-button-images=1\n";
-+    gtkrc3writer.close();
++    out << QStringLiteral("[Settings]\n");
++    out << QStringLiteral("gtk-font-name=Oxygen-Sans 10\n"); // matches plasma-workspace:startkde/startkde.cmake
++    out << QStringLiteral("gtk-theme-name=")+gtk3Theme+QStringLiteral("\n");
++    out << QStringLiteral("gtk-icon-theme-name=oxygen\n"); // breeze icons don't seem to work with gtk
++    out << QStringLiteral("gtk-fallback-icon-theme=gnome\n");
++    out << QStringLiteral("gtk-toolbar-style=GTK_TOOLBAR_ICONS\n");
++    out << QStringLiteral("gtk-menu-images=1\n");
++    out << QStringLiteral("gtk-button-images=1\n");
 +    qCDebug(GTKBREEZE) << "gtk3rc written";
++
++    QString cssFile = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() +
++                      QDir::separator() + ".config/gtk-3.0/gtk.css";
++    QFile gtkcss3writer(cssFile);
++    opened = gtkcss3writer.open(QIODevice::WriteOnly | QIODevice::Text);
++    if (!opened) {
++        qCWarning(GTKBREEZE) << "failed to open " << cssFile;
++        return 1;
++    }
++    QTextStream outcss(&gtkcss3writer);
++    outcss << QStringLiteral(".window-frame, .window-frame:backdrop {\n");
++    outcss << QStringLiteral("box-shadow: 0 0 0 black;\n");
++    outcss << QStringLiteral("border-style: none;\n");
++    outcss << QStringLiteral("margin: 0;\n");
++    outcss << QStringLiteral("border-radius: 0;\n");
++    outcss << QStringLiteral("}\n");
++    outcss << QStringLiteral(".titlebar {\n");
++    outcss << QStringLiteral("border-radius: 0;\n");
++    outcss << QStringLiteral("}\n");
++    qCDebug(GTKBREEZE) << ".config/gtk-3.0/gtk.css written";
++    return 0;
 +}
 +
-+int main(int argc, char **argv)
++int main(/*int argc, char **argv*/)
 +{
-+    QCoreApplication app(argc, argv);
 +    QLoggingCategory::setFilterRules(QStringLiteral("gtkbreeze.debug = true"));
 +    qCDebug(GTKBREEZE) << "updateGtk2()";
 +
-+    setGtk2();
-+    setGtk3();
++    int result = 0;
++    result = setGtk2();
++    result = setGtk3();
 +
-+    return 0;
++    return result;
 +}
