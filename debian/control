@@ -11,9 +11,9 @@ Build-Depends: cmake,
                libkf5style-dev (>= 5.2.0),
                libkf5windowsystem-dev (>= 5.2.0),
                libqt5x11extras5-dev,
+               pkg-config,
                pkg-kde-tools (>= 0.15.15ubuntu1~),
-               qtbase5-dev,
-               pkg-config
+               qtbase5-dev
 Standards-Version: 3.9.5
 Section: kde
 Homepage: https://projects.kde.org/projects/kde/workspace/breeze
@@ -73,7 +73,7 @@ Description: Widget style for Qt and KDE Software
 
 Package: qml-module-qtquick-controls-styles-breeze
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, qml-module-qtquick-controls
+Depends: qml-module-qtquick-controls, ${misc:Depends}, ${shlibs:Depends}
 Breaks: breeze (<< 4:5.0.95)
 Replaces: breeze (<< 4:5.0.95)
 Description: QtQuick style for Qt and KDE Software
