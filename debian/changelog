@@ -5,6 +5,7 @@ breeze (4:5.0.2-0ubuntu1) UNRELEASED; urgency=medium
 
   [ Scarlett Clark ]
   * New upstream release
+  * Remove no-human-maintainers lintian-override per ScottK. 
 
  -- Scarlett Clark <sgclark@kubuntu.org>  Wed, 17 Sep 2014 18:03:53 -0700
 
