@@ -81,3 +81,14 @@ Description: QtQuick style for Qt and KDE Software
  This is the default QtQuick Controls style for KDE's Plasma desktop.
  .
  This package is part of the Breeze theme module.
+
+Package: breeze-dbg
+Section: debug
+Architecture: any
+Recommends: qtbase5-dbg
+Depends: breeze (= ${binary:Version}) | kwin-style-breeze (= ${binary:Version}) | kde-style-breeze (= ${binary:Version}) | qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
+         ${misc:Depends}
+Description: debugging symbols for the Breeze desktop theme
+ The Breeze desktop theme is used by Plasma and other KDE Software.
+ .
+ This package contains the debugging symbols.
