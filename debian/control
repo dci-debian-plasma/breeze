@@ -101,7 +101,7 @@ Section: debug
 Priority: extra
 Architecture: any
 Recommends: qtbase5-dbg
-Depends: breeze (= ${binary:Version}) | kwin-style-breeze (= ${binary:Version}) | kde-style-breeze (= ${binary:Version}) | qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
+Depends: breeze (= ${binary:Version}) | kwin-style-breeze (= ${binary:Version}) | kde-style-breeze (= ${binary:Version}) | kde-style-breeze-qt4 (= ${binary:Version}) | qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
          ${misc:Depends}
 Description: debugging symbols for the Breeze desktop theme
  The Breeze desktop theme is used by Plasma and other KDE Software.
