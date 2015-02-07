@@ -98,6 +98,7 @@ Description: QtQuick style for Qt and KDE Software
 
 Package: breeze-dbg
 Section: debug
+Priority: extra
 Architecture: any
 Recommends: qtbase5-dbg
 Depends: breeze (= ${binary:Version}) | kwin-style-breeze (= ${binary:Version}) | kde-style-breeze (= ${binary:Version}) | qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
