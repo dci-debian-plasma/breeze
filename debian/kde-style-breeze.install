@@ -3,6 +3,5 @@ usr/lib/*/qt5/plugins/styles/breeze.so
 usr/share/QtCurve/Breeze.qtcurve
 usr/share/color-schemes/Breeze.colors
 usr/share/color-schemes/BreezeDark.colors
-usr/share/kservices5/breezestyleconfig.desktop
 usr/share/kstyle/themes/breeze.themerc
 usr/share/locale/*/*/breeze_style_config.mo
