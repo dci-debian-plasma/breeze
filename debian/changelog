@@ -1,4 +1,4 @@
-breeze (4:5.2.0-1~) UNRELEASED; urgency=medium
+breeze (4:5.2.0-1) experimental; urgency=medium
 
   * Prepare initial Debian release.
   * Update install files.
@@ -6,7 +6,7 @@ breeze (4:5.2.0-1~) UNRELEASED; urgency=medium
   * Update watch file.
   * Bump Standards-Version to 3.9.6, no changes needed.
 
- -- Maximiliano Curia <maxy@debian.org>  Sat, 07 Feb 2015 13:38:24 +0100
+ -- Maximiliano Curia <maxy@debian.org>  Sat, 07 Feb 2015 16:51:36 +0100
 
 breeze (4:5.2.0-0ubuntu1) vivid; urgency=medium
 
