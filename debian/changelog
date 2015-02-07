@@ -1,6 +1,7 @@
 breeze (4:5.2.0-1~) UNRELEASED; urgency=medium
 
   * Prepare initial Debian release.
+  * Update install files.
 
  -- Maximiliano Curia <maxy@debian.org>  Sat, 07 Feb 2015 13:38:24 +0100
 
