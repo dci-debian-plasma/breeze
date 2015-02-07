@@ -1,5 +1,6 @@
 Source: breeze
-Priority: extra
+Section: kde
+Priority: optional
 Maintainer: Debian/Kubuntu Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>
 Build-Depends: cmake,
                debhelper (>= 9.0.0),
@@ -18,7 +19,6 @@ Build-Depends: cmake,
                pkg-kde-tools (>= 0.15.15ubuntu1~),
                qtbase5-dev
 Standards-Version: 3.9.5
-Section: kde
 Homepage: https://projects.kde.org/projects/kde/workspace/breeze
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-kde/plasma/breeze.git
 Vcs-Git: git://anonscm.debian.org/pkg-kde/plasma/breeze.git
