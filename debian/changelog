@@ -1,3 +1,9 @@
+breeze (4:5.2.1-0ubuntu1) UNRELEASED; urgency=medium
+
+  * New upstream release
+
+ -- Scarlett Clark <sgclark@kubuntu.org>  Thu, 19 Feb 2015 09:48:24 -0800
+
 breeze (4:5.2.0-0ubuntu1) vivid; urgency=medium
 
   * New upstream release
