@@ -33,7 +33,7 @@ Depends: breeze-cursor-theme (= ${binary:Version}),
          qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: kde-style-qtcurve4
+Recommends: kde-style-qtcurve4, orion-gtk-theme
 Description: Default Plasma theme (meta-package).
  This is the default theme for the KDE Plasma desktop.
  .
