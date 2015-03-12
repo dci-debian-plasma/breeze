@@ -1,8 +1,10 @@
-breeze (4:5.2.1-0ubuntu2) UNRELEASED; urgency=medium
+breeze (4:5.2.1-0ubuntu2) vivid; urgency=medium
 
   * Add recommends on orion-gtk-theme
+  * Add upstream_gtktheme-setup.diff from upstream to fix gtk theme
+    setup
 
- -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 12 Mar 2015 12:49:00 +0100
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 12 Mar 2015 13:42:19 +0100
 
 breeze (4:5.2.1-0ubuntu1) vivid; urgency=medium
 
