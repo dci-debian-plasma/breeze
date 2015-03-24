@@ -5,7 +5,7 @@ breeze (4:5.2.2-0ubuntu1) UNRELEASED; urgency=medium
   * Add new dep to libkf5iconthemes-dev (>= 5.2.2)
   * wrap-and-sort 
   * Remove missing files. 
-  * Add back files to make ci happy.
+
  -- Scarlett Clark <sgclark@kubuntu.org>  Thu, 19 Mar 2015 13:36:08 -0700
 
 breeze (4:5.2.1-0ubuntu2) vivid; urgency=medium
