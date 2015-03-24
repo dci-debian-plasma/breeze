@@ -1,0 +1,21 @@
+#! /bin/sh
+
+set -e
+
+MAINPRIORITY=101 # DMZ+1
+SECONDARYPRIORITY=41 # Oxygen+1
+TARGET=/usr/share/icons/default/index.theme
+ICONDIR=/usr/share/icons
+
+update-alternatives --install $TARGET \
+    x-cursor-theme \
+        $ICONDIR/breeze_cursors/index.theme \
+        $MAINPRIORITY
+update-alternatives --install $TARGET \
+    x-cursor-theme \
+        $ICONDIR/Breeze_Snow/index.theme \
+        $SECONDARYPRIORITY
+
+#DEBHELPER#
+
+exit 0
