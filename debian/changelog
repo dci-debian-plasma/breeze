@@ -5,6 +5,35 @@ breeze (4:5.2.2-1~) UNRELEASED; urgency=medium
 
  -- Maximiliano Curia <maxy@debian.org>  Wed, 25 Mar 2015 10:00:02 +0100
 
+breeze (4:5.2.2-0ubuntu1) vivid; urgency=medium
+
+  [ Scarlett Clark ]
+  * New upstream release
+  * Remove upstream applied patch upstream_gtktheme-setup.diff 
+  * Add new dep to libkf5iconthemes-dev (>= 5.2.2)
+  * wrap-and-sort 
+  * Remove missing files. 
+
+  [ Harald Sitter ]
+  * Add postinst and prerm for breeze-cursor-theme setting it as the default
+    cursor theme
+
+ -- Scarlett Clark <sgclark@kubuntu.org>  Tue, 24 Mar 2015 06:32:53 -0700
+
+breeze (4:5.2.1-0ubuntu2) vivid; urgency=medium
+
+  * Add recommends on orion-gtk-theme
+  * Add upstream_gtktheme-setup.diff from upstream to fix gtk theme
+    setup
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 12 Mar 2015 13:42:19 +0100
+
+breeze (4:5.2.1-0ubuntu1) vivid; urgency=medium
+
+  * New upstream release
+
+ -- Scarlett Clark <sgclark@kubuntu.org>  Mon, 23 Feb 2015 09:32:56 -0800
+
 breeze (4:5.2.0-1) experimental; urgency=medium
 
   * Prepare initial Debian release.
