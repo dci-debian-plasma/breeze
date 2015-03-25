@@ -9,10 +9,10 @@ breeze (4:5.2.2-0ubuntu1) vivid; urgency=medium
 
   [ Scarlett Clark ]
   * New upstream release
-  * Remove upstream applied patch upstream_gtktheme-setup.diff 
+  * Remove upstream applied patch upstream_gtktheme-setup.diff
   * Add new dep to libkf5iconthemes-dev (>= 5.2.2)
-  * wrap-and-sort 
-  * Remove missing files. 
+  * wrap-and-sort
+  * Remove missing files.
 
   [ Harald Sitter ]
   * Add postinst and prerm for breeze-cursor-theme setting it as the default
