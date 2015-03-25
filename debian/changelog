@@ -1,4 +1,4 @@
-breeze (4:5.2.2-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.2.2-0ubuntu1) vivid; urgency=medium
 
   [ Scarlett Clark ]
   * New upstream release
@@ -10,7 +10,7 @@ breeze (4:5.2.2-0ubuntu1) UNRELEASED; urgency=medium
   * Add postinst and prerm for breeze-cursor-theme setting it as the default
     cursor theme
 
- -- Scarlett Clark <sgclark@kubuntu.org>  Thu, 19 Mar 2015 13:36:08 -0700
+ -- Scarlett Clark <sgclark@kubuntu.org>  Tue, 24 Mar 2015 06:32:53 -0700
 
 breeze (4:5.2.1-0ubuntu2) vivid; urgency=medium
 
