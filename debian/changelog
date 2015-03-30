@@ -1,3 +1,9 @@
+breeze (4:5.2.2-0ubuntu3) vivid; urgency=medium
+
+  * Make sure we assign a different priority to secondary cursor themes
+
+ -- Harald Sitter <sitter@kde.org>  Mon, 30 Mar 2015 13:30:40 +0200
+
 breeze (4:5.2.2-0ubuntu2) vivid; urgency=medium
 
   * Revise postinst and prerm for cursor themes. The themes now
