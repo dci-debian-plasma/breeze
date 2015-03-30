@@ -1,7 +1,11 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
 
 include /usr/share/pkg-kde-tools/qt-kde-team/3/debian-qt-kde.mk
+
+override_dh_install:
+	debian/wrapperthemes.sh breeze_cursors
+	debian/wrapperthemes.sh Breeze_Snow
+	$(overridden_command)
 
 override_dh_strip:
 	$(overridden_command) --dbg-package=breeze-dbg
