@@ -2,8 +2,9 @@ breeze (4:5.3.0-0ubuntu1) UNRELEASED; urgency=medium
 
   * Plasma 5.3 beta
   * new upstream release
+  * new upstream release
 
- -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 23 Apr 2015 16:21:58 +0200
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 23 Apr 2015 16:54:42 +0200
 
 breeze (4:5.2.2-0ubuntu3) vivid; urgency=medium
 
