@@ -1,6 +1,7 @@
 usr/bin/breeze-settings5
 usr/lib/*/kconf_update_bin/gtkbreeze
 usr/lib/*/kconf_update_bin/kde4breeze
+usr/share/icons/hicolor/scalable/apps/breeze-settings.svgz
 usr/share/kconf_update/gtkbreeze.upd
 usr/share/kconf_update/kde4breeze.upd
 usr/share/wallpapers/Next

@@ -5,3 +5,4 @@ usr/share/color-schemes/Breeze.colors
 usr/share/color-schemes/BreezeDark.colors
 usr/share/kstyle/themes/breeze.themerc
 usr/share/locale/*/*/breeze_style_config.mo
+usr/share/kservices5/breezestyleconfig.desktop
