@@ -1,4 +1,4 @@
-breeze-qt4 (4:5.3.1-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.3.1-0ubuntu1) UNRELEASED; urgency=medium
 
   [ Jonathan Riddell ]
   * Plasma 5.3 beta
@@ -8,6 +8,7 @@ breeze-qt4 (4:5.3.1-0ubuntu1) UNRELEASED; urgency=medium
   [ Scarlett Clark ]
   * Vivid backport
   * Qt4 version.
+  * Undo qt4. 
 
  -- Scarlett Clark <sgclark@kubuntu.org>  Wed, 27 May 2015 07:31:07 -0700
 
