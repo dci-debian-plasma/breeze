@@ -3,15 +3,6 @@ breeze (4:5.3.1-0ubuntu1) UNRELEASED; urgency=medium
   [ Jonathan Riddell ]
   * Plasma 5.3 beta
   * new upstream release
-  * new upstream release
-
-  [ Scarlett Clark ]
-  * Vivid backport
-  * Qt4 version.
-  * Undo qt4. 
-
-  [ Jonathan Riddell ]
-  * New upstream release
 
  -- Jonathan Riddell <jriddell@ubuntu.com>  Thu, 04 Jun 2015 20:14:01 +0200
 
