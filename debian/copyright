@@ -31,6 +31,9 @@ Files: cursors/*
        icons-dark/*
        wallpapers/*
 Copyright: 2014 Uri Herrera <kaisergreymon99@gmail.com> and others
+Comment: Some svg files have outdated license information (CC-BY-SA) in
+ their metadata. This has been fixed in the upstream Git repository.
+ See https://github.com/NitruxSA/plasma-next-icons/commit/b5e64d628df06687d2cec7424b466a15274e52ed
 License: LGPL-3+
  This library is free software; you can redistribute it and/or
  modify it under the terms of the GNU Lesser General Public
