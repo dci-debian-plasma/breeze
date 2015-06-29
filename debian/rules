@@ -2,12 +2,6 @@
 
 include /usr/share/pkg-kde-tools/qt-kde-team/3/debian-qt-kde.mk
 
-<<<<<<< HEAD
-override_dh_install:
-	debian/wrapperthemes.sh breeze_cursors
-	debian/wrapperthemes.sh Breeze_Snow
-	$(overridden_command)
-=======
 override_dh_auto_clean:
 	$(overridden_command)
 	rm -rf build-qt4
@@ -23,7 +17,6 @@ override_dh_auto_build:
 override_dh_auto_install:
 	$(overridden_command)
 	$(overridden_command) --builddirectory=build-qt4
->>>>>>> master
 
 override_dh_strip:
 	$(overridden_command) --dbg-package=breeze-dbg
