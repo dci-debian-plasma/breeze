@@ -5,7 +5,10 @@ Source: ftp://ftp.kde.org/pub/kde/unstable/plasma/breeze
 Files: *
        debian/*
 Copyright: 2014 Ken Vermette <vermette@gmail.com>
+           2014 Martin Gräßlin <mgraesslin@kde.org>
+           2009-2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
            2014 Scarlett Clark <scarlett@scarlettgatelyclark.com>
+           2014 Jonathan Riddell <jriddell@ubuntu.com>
 License: GPL-2.0+
  This package is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
@@ -22,3 +25,113 @@ License: GPL-2.0+
  .
  On Debian systems, the complete text of the GNU General
  Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+
+Files: cursors/*
+       icons/*
+       icons-dark/*
+       wallpapers/*
+Copyright: 2014 Uri Herrera <kaisergreymon99@gmail.com> and others
+Comment: Some svg files have outdated license information (CC-BY-SA) in
+ their metadata. This has been fixed in the upstream Git repository.
+ See https://github.com/NitruxSA/plasma-next-icons/commit/b5e64d628df06687d2cec7424b466a15274e52ed
+License: LGPL-3+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 3 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public
+ License along with this library. If not, see <http://www.gnu.org/licenses/>.
+ .
+ Clarification:
+ .
+ The GNU Lesser General Public License or LGPL is written for
+ software libraries in the first place. We expressly want the LGPL to
+ be valid for this artwork library too.
+ .
+ KDE Breeze theme icons is a special kind of software library, it is an
+ artwork library, it's elements can be used in a Graphical User Interface, or
+ GUI.
+ .
+ Source code, for this library means:
+  - where they exist, SVG;
+  - otherwise, if applicable, the multi-layered formats xcf or psd, or
+ otherwise png.
+ .
+ The LGPL in some sections obliges you to make the files carry
+ notices. With images this is in some cases impossible or hardly useful.
+ .
+ With this library a notice is placed at a prominent place in the directory
+ containing the elements. You may follow this practice.
+ .
+ The exception in section 5 of the GNU Lesser General Public License covers
+ the use of elements of this art library in a GUI.
+ .
+ On Debian systems, the complete text of the  GNU Lesser General Public
+ License version 3 can be found in "/usr/share/common-licenses/LGPL-3".
+
+Files: kdecoration/breezeexceptionlist.*
+       kdecoration/config/breezeconfigwidget.*
+       kdecoration/config/breezedetectwidget.*
+       kdecoration/config/breezeexceptiondialog.*
+       kdecoration/config/breezeexceptionmodel.*
+       kdecoration/config/breezeitemmodel.*
+       kdecoration/config/breezeconfig.*
+       kdecoration/config/breezeexceptionlistwidget.*
+       kdecoration/config/breezelistmodel.h
+       kstyle/config/breezeconfigdialog.*
+       kstyle/config/main.cpp
+Copyright: 2009-2010 Hugo Pereira Da Costa <hugo.pereira@free.fr>
+           2004-2008 Lubos Lunak <l.lunak@kde.org>
+           2001 Karol Szwed <gallium@kde.org>
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to
+ deal in the Software without restriction, including without limitation the
+ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ IN THE SOFTWARE.
+
+Files: qtquickcontrols/GroupBoxStyle.qml
+Copyright: 2013 Digia Plc and/or its subsidiary(-ies)
+License: BSD-3-clause
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are
+ met:
+   * Redistributions of source code must retain the above copyright
+     notice, this list of conditions and the following disclaimer.
+   * Redistributions in binary form must reproduce the above copyright
+     notice, this list of conditions and the following disclaimer in
+     the documentation and/or other materials provided with the
+     distribution.
+   * Neither the name of Digia Plc and its Subsidiary(-ies) nor the names
+     of its contributors may be used to endorse or promote products derived
+     from this software without specific prior written permission.
+ .
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
