@@ -2,14 +2,14 @@
 
 set -e
 
-ICONDIR=/usr/share/icons
+ICONDIR=/etc/X11/cursors
 THEMES="breeze_cursors Breeze_Snow"
 
 case "$1" in
     remove|deconfigure|failed-upgrade)
         for theme in $THEMES; do
             update-alternatives --remove x-cursor-theme \
-                $ICONDIR/$theme/index.theme
+                $ICONDIR/$theme.theme
         done
   ;;
 esac
