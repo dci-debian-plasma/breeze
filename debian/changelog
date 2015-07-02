@@ -34,16 +34,17 @@ breeze (4:5.2.2-0ubuntu2) vivid; urgency=medium
     should make the default setup work as expected.
 
  -- Harald Sitter <sitter@kde.org>  Mon, 30 Mar 2015 12:59:09 +0200
+
 breeze (4:5.2.2-1) experimental; urgency=medium
 
-  * New upstream release (5.2.1).
+  * Team upload.
   * New upstream release (5.2.2).
 
   [ Felix Geyer ]
   * Improve the copyright file.
   * Turn breeze-cursor-theme and breeze-icon-theme into arch-all packages.
 
- -- Maximiliano Curia <maxy@debian.org>  Wed, 25 Mar 2015 23:18:01 +0100
+ -- Felix Geyer <fgeyer@debian.org>  Tue, 16 Jun 2015 18:52:55 +0200
 
 breeze (4:5.2.2-0ubuntu1) vivid; urgency=medium
 
