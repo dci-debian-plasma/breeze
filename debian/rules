@@ -11,6 +11,10 @@ override_dh_auto_configure:
 	$(overridden_command) --builddirectory=build-qt4 -- -DUSE_KDE4=true
 
 override_dh_auto_build:
+	# This is required to make sure Plasma does not
+	# fall back to a cursor theme from the 90's
+	debian/wrapperthemes.sh breeze_cursors
+	debian/wrapperthemes.sh Breeze_Snow
 	$(overridden_command)
 	$(overridden_command) --builddirectory=build-qt4
 
