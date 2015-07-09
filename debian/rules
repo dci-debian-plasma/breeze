@@ -23,6 +23,7 @@ override_dh_install:
 	# fall back to a cursor theme from the 90's
 	debian/wrapperthemes.sh breeze_cursors
 	debian/wrapperthemes.sh Breeze_Snow
+	$(overridden_command)
 
 override_dh_strip:
 	$(overridden_command) --dbg-package=breeze-dbg
