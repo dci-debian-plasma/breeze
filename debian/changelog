@@ -1,7 +1,12 @@
 breeze (4:5.3.2-3~) UNRELEASED; urgency=medium
 
+  [ Maximiliano Curia ]
   * Add a symlink for kde-style-breeze-qt4 in the qt4 plugins dirs.
     (Closes: #792119)
+
+  [ Felix Geyer ]
+  * Move the breeze qt4 plugin to the default qt4 plugin path instead
+    of adding a symlink.
 
  -- Maximiliano Curia <maxy@debian.org>  Mon, 13 Jul 2015 10:33:37 +0200
 
