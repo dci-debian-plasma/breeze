@@ -1,4 +1,4 @@
-breeze (4:5.3.2-3~) UNRELEASED; urgency=medium
+breeze (4:5.3.2-3) unstable; urgency=medium
 
   [ Maximiliano Curia ]
   * Add a symlink for kde-style-breeze-qt4 in the qt4 plugins dirs.
@@ -8,7 +8,7 @@ breeze (4:5.3.2-3~) UNRELEASED; urgency=medium
   * Move the breeze qt4 plugin to the default qt4 plugin path instead
     of adding a symlink.
 
- -- Maximiliano Curia <maxy@debian.org>  Mon, 13 Jul 2015 10:33:37 +0200
+ -- Felix Geyer <fgeyer@debian.org>  Wed, 29 Jul 2015 22:42:28 +0200
 
 breeze (4:5.3.2-2) unstable; urgency=medium
 
