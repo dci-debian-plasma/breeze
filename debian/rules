@@ -17,6 +17,8 @@ override_dh_auto_build:
 override_dh_auto_install:
 	$(overridden_command)
 	$(overridden_command) --builddirectory=build-qt4
+	debian/wrapperthemes.sh breeze_cursors
+	debian/wrapperthemes.sh Breeze_Snow
 
 override_dh_install:
 	# This is required to make sure Plasma does not

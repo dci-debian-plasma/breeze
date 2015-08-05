@@ -1,9 +1,19 @@
-breeze (4:5.3.2-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.3.2-0ubuntu3) UNRELEASED; urgency=medium
 
   * Vivid backport
   * Manual merge. 
+  * Fix merge. 
+  * Fix merge again. 
+  * Fix merge yet again. 
 
- -- Scarlett Clark <sgclark@kubuntu.org>  Thu, 02 Jul 2015 11:21:36 -0700
+ -- Scarlett Clark <sgclark@kubuntu.org>  Tue, 04 Aug 2015 21:01:53 -0700
+
+breeze (4:5.3.2-0ubuntu2) wily; urgency=medium
+
+  * generate /etc/X11/cursors/{breeze_cursors,Breeze_Snow}.theme again
+    to fix the breeze-cursor-theme.postinst failure
+
+ -- Philip Muškovac <yofel@kubuntu.org>  Mon, 27 Jul 2015 21:12:41 +0200
 
 breeze (4:5.3.2-0ubuntu1) wily; urgency=medium
 
