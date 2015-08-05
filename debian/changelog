@@ -1,7 +1,11 @@
 breeze (4:5.3.2-0ubuntu3) UNRELEASED; urgency=medium
 
   * Vivid backport 
+  * Manual merge. 
   * Fix merge. 
+  * Fix merge again. 
+  * Fix merge yet again. 
+  * Merge problems again.
 
  -- Scarlett Clark <sgclark@kubuntu.org>  Tue, 04 Aug 2015 21:01:53 -0700
 
