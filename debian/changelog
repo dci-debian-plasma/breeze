@@ -1,5 +1,6 @@
-breeze (4:5.3.2-0ubuntu3) UNRELEASED; urgency=medium
+breeze (4:5.3.95-0ubuntu1) UNRELEASED; urgency=medium
 
+  [ Scarlett Clark ]
   * Vivid backport 
   * Manual merge. 
   * Fix merge. 
@@ -7,7 +8,10 @@ breeze (4:5.3.2-0ubuntu3) UNRELEASED; urgency=medium
   * Fix merge yet again. 
   * Merge problems again.
 
- -- Scarlett Clark <sgclark@kubuntu.org>  Tue, 04 Aug 2015 21:01:53 -0700
+  [ Jonathan Riddell ]
+  * new upstream beta release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 07 Aug 2015 18:07:51 +0200
 
 breeze (4:5.3.2-0ubuntu2) wily; urgency=medium
 
