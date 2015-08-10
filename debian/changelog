@@ -1,4 +1,4 @@
-breeze (4:5.3.95-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.3.95-0ubuntu1) wily; urgency=medium
 
   [ Scarlett Clark ]
   * Vivid backport 
@@ -11,7 +11,7 @@ breeze (4:5.3.95-0ubuntu1) UNRELEASED; urgency=medium
   [ Jonathan Riddell ]
   * new upstream beta release
 
- -- Jonathan Riddell <jriddell@ubuntu.com>  Fri, 07 Aug 2015 18:07:51 +0200
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 10 Aug 2015 23:03:50 +0200
 
 breeze (4:5.3.2-0ubuntu2) wily; urgency=medium
 
