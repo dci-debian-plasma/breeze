@@ -31,8 +31,8 @@ Vcs-Git: git://anonscm.debian.org/pkg-kde/plasma/breeze.git
 
 Package: breeze
 Architecture: any
-Depends: breeze-cursor-theme (= ${binary:Version}),
-         breeze-icon-theme (= ${binary:Version}),
+Depends: breeze-cursor-theme (= ${source:Version}),
+         breeze-icon-theme (= ${source:Version}),
          kde-style-breeze (= ${binary:Version}),
          kde-style-breeze-qt4 (= ${binary:Version}),
          kwin-style-breeze (= ${binary:Version}),
@@ -52,7 +52,7 @@ Description: Default Plasma theme (meta-package).
  This package is part of the KDE base workspace module.
 
 Package: breeze-cursor-theme
-Architecture: any
+Architecture: all
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Description: Default Plasma cursor theme.
  This is the default cursor theme for the KDE Plasma 5 desktop.
@@ -60,7 +60,7 @@ Description: Default Plasma cursor theme.
  This package is part of the Breeze theme module.
 
 Package: breeze-icon-theme
-Architecture: any
+Architecture: all
 Depends: oxygen-icon-theme, ${misc:Depends}, ${shlibs:Depends}
 Description: Default Plasma icon theme.
  This is the default icon theme for the KDE Plasma 5 desktop.
