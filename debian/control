@@ -36,6 +36,7 @@ Depends: breeze-cursor-theme (= ${binary:Version}),
          kde-style-breeze (= ${binary:Version}),
          kde-style-breeze-qt4 (= ${binary:Version}),
          kwin-style-breeze (= ${binary:Version}),
+         plasma-look-and-feel-org-kde-breezedark-desktop (= ${source:Version}),
          qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
@@ -100,6 +101,14 @@ Breaks: breeze (<< 4:5.0.95)
 Replaces: breeze (<< 4:5.0.95)
 Description: QtQuick style for Qt and KDE Software
  This is the default QtQuick Controls style for KDE's Plasma desktop.
+ .
+ This package is part of the Breeze theme module.
+
+Package: plasma-look-and-feel-org-kde-breezedark-desktop
+Architecture: all
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Dark Breeze look-and-feel for Plasma
+ This is the dark breeeze look-and-feel package for Plasma.
  .
  This package is part of the Breeze theme module.
 
