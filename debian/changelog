@@ -4,6 +4,12 @@ breeze (4:5.4.0-0ubuntu1) wily; urgency=medium
 
  -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 31 Aug 2015 15:46:44 +0100
 
+breeze (4:5.3.95-0ubuntu4) wily; urgency=medium
+
+  * No change rebuild to adopt kdecorationv5 everywhere.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 30 Aug 2015 17:07:35 +0200
+
 breeze (4:5.3.95-0ubuntu3) wily; urgency=medium
 
   * No change rebuild to adopt kdecorationv5. 2nd try after v5 was
