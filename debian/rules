@@ -6,27 +6,27 @@ include /usr/share/pkg-kde-tools/qt-kde-team/3/debian-qt-kde.mk
 
 override_dh_auto_clean:
 	$(overridden_command)
-	rm -rf build-qt4
+	rm -rf $(CURDIR)/build-qt4
 
 override_dh_auto_configure:
 	$(overridden_command)
-	$(overridden_command) --builddirectory=build-qt4 -- -DUSE_KDE4=true
+	$(overridden_command) --builddirectory=$(CURDIR)/build-qt4 -- -DUSE_KDE4=true
 
 override_dh_auto_build:
 	$(overridden_command)
-	$(overridden_command) --builddirectory=build-qt4
+	$(overridden_command) --builddirectory=$(CURDIR)/build-qt4
 
 override_dh_auto_install:
 	$(overridden_command)
-	$(overridden_command) --builddirectory=build-qt4
-	mkdir -p debian/kde-style-breeze-qt4/usr/lib/$(DEB_HOST_MULTIARCH)/qt4/plugins/styles/
-	ln -s /usr/lib/kde4/plugins/styles/breeze.so debian/kde-style-breeze-qt4/usr/lib/$(DEB_HOST_MULTIARCH)/qt4/plugins/styles/
+	$(overridden_command) --builddirectory=$(CURDIR)/build-qt4
+	mkdir -p $(CURDIR)/debian/kde-style-breeze-qt4/usr/lib/$(DEB_HOST_MULTIARCH)/qt4/plugins/styles/
+	ln -s /usr/lib/kde4/plugins/styles/breeze.so $(CURDIR)/debian/kde-style-breeze-qt4/usr/lib/$(DEB_HOST_MULTIARCH)/qt4/plugins/styles/
 
 override_dh_install:
 	# This is required to make sure Plasma does not
 	# fall back to a cursor theme from the 90's
-	debian/wrapperthemes.sh breeze_cursors
-	debian/wrapperthemes.sh Breeze_Snow
+	CURDIR=$(CURDIR) $(CURDIR)/debian/wrapperthemes.sh breeze_cursors \
+	                                                   Breeze_Snow
 	$(overridden_command)
 
 override_dh_strip:

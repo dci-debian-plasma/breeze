@@ -1,17 +1,15 @@
 #! /bin/sh
-
 set -e
 
 ICONDIR=/etc/X11/cursors
-THEMES="breeze_cursors Breeze_Snow"
 
 case "$1" in
     remove|deconfigure|failed-upgrade)
-        for theme in $THEMES; do
-            update-alternatives --remove x-cursor-theme \
-                $ICONDIR/$theme.theme
-        done
-  ;;
+       update-alternatives --remove x-cursor-theme \
+           $ICONDIR/breeze_cursors.theme
+       update-alternatives --remove x-cursor-theme \
+           $ICONDIR/Breeze_Snow.theme
+    ;;
 esac
 
 #DEBHELPER#
