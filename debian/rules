@@ -22,5 +22,12 @@ override_dh_auto_install:
 	mkdir -p debian/kde-style-breeze-qt4/usr/lib/$(DEB_HOST_MULTIARCH)/qt4/plugins/styles/
 	ln -s /usr/lib/kde4/plugins/styles/breeze.so debian/kde-style-breeze-qt4/usr/lib/$(DEB_HOST_MULTIARCH)/qt4/plugins/styles/
 
+override_dh_install:
+	# This is required to make sure Plasma does not
+	# fall back to a cursor theme from the 90's
+	debian/wrapperthemes.sh breeze_cursors
+	debian/wrapperthemes.sh Breeze_Snow
+	$(overridden_command)
+
 override_dh_strip:
 	$(overridden_command) --dbg-package=breeze-dbg

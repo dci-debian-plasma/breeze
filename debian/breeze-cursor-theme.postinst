@@ -5,21 +5,21 @@ set -e
 MAINPRIORITY=102 # DMZ+2 (was +1 previously, need upgrade)
 SECONDARYPRIORITY=41 # Oxygen+1
 TARGET=/usr/share/icons/default/index.theme
-ICONDIR=/usr/share/icons
+ICONDIR=/etc/X11/cursors
 MAIN_THEMES="breeze_cursors"
 SECONDARY_THEMES="Breeze_Snow"
 
 for theme in $MAIN_THEMES; do
     update-alternatives --install $TARGET \
         x-cursor-theme \
-            $ICONDIR/$theme/index.theme \
+            $ICONDIR/$theme.theme \
             $MAINPRIORITY
 done
 
 for theme in $SECONDARY_THEMES; do
     update-alternatives --install $TARGET \
         x-cursor-theme \
-            $ICONDIR/$theme/index.theme \
+            $ICONDIR/$theme.theme \
             $SECONDARYPRIORITY
 done
 
