@@ -1,8 +1,8 @@
-breeze (4:5.4.2-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.4.2-0ubuntu1) wily; urgency=medium
 
   * New upstream release
 
- -- Scarlett Clark <sgclark@kubuntu.org>  Thu, 01 Oct 2015 07:18:32 -0700
+ -- Scarlett Clark <sgclark@kubuntu.org>  Fri, 02 Oct 2015 15:51:05 +0100
 
 breeze (4:5.4.1-0ubuntu1) wily; urgency=medium
 
