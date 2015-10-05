@@ -1,3 +1,10 @@
+breeze (4:5.4.2-0ubuntu2) wily; urgency=medium
+
+  * Add 0001-Install-emotes-and-mimtetypes-directories-of-the-dar.patch
+    from upstream to install all icons
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Mon, 05 Oct 2015 15:24:19 +0100
+
 breeze (4:5.4.2-0ubuntu1) wily; urgency=medium
 
   * New upstream release
