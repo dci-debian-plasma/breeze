@@ -1,3 +1,9 @@
+breeze (4:5.4.3-0ubuntu1) UNRELEASED; urgency=medium
+
+  * New upstream bugfix release
+
+ -- Scarlett Clark <sgclark@kubuntu.org>  Mon, 09 Nov 2015 15:57:44 -0800
+
 breeze (4:5.4.2-0ubuntu2) wily; urgency=medium
 
   * Add 0001-Install-emotes-and-mimtetypes-directories-of-the-dar.patch
