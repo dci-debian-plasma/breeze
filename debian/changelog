@@ -1,4 +1,10 @@
-breeze (4:5.4.3-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.4.95-0ubuntu1) UNRELEASED; urgency=medium
+
+  * Remove breeze-icon-theme now part of Frameworks
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 22 Nov 2015 14:00:06 +0000
+
+breeze (4:5.4.3-0ubuntu2) UNRELEASED; urgency=medium
 
   [ Scarlett Clark ]
   * New upstream bugfix release
