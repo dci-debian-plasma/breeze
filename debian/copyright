@@ -1,30 +1,116 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: breeze
-Source: ftp://ftp.kde.org/pub/kde/unstable/plasma/breeze
+Source: http://quickgit.kde.org/?p=breeze.git
 
 Files: *
-       debian/*
-Copyright: 2014 Ken Vermette <vermette@gmail.com>
-           2014 Martin Gräßlin <mgraesslin@kde.org>
-           2009-2014 Hugo Pereira Da Costa <hugo.pereira@free.fr>
-           2014 Scarlett Clark <scarlett@scarlettgatelyclark.com>
-           2014 Jonathan Riddell <jriddell@ubuntu.com>
-License: GPL-2.0+
- This package is free software; you can redistribute it and/or modify
+Copyright: 2015, David Edmundson <davidedmundson@kde.org>
+           1989-1991, Free Software Foundation, Inc
+           2014, Hugo Pereira Da Costa <hugo.pereira@free.fr>
+           2014, Jonathan Riddell <jriddell@ubuntu.com>
+           2014, Marco Martin <mart@kde.org>
+           2004-2008, Free Software Foundation, Inc
+           2007, Free Software Foundation, Inc. <http://fsf.org/>
+           2014, Rosetta Contributors and Canonical Ltd 2014
+           2007-2015, This_file_is_part_of_KDE
+License: GPL-2+
+
+Files: kdecoration/breezeexceptionlist.cpp
+       kdecoration/breezeexceptionlist.h
+       kdecoration/config/breezeconfig.cpp
+       kdecoration/config/breezeconfig.h
+       kdecoration/config/breezeconfigwidget.cpp
+       kdecoration/config/breezeconfigwidget.h
+       kdecoration/config/breezedetectwidget.cpp
+       kdecoration/config/breezedetectwidget.h
+       kdecoration/config/breezeexceptiondialog.cpp
+       kdecoration/config/breezeexceptiondialog.h
+       kdecoration/config/breezeexceptionlistwidget.cpp
+       kdecoration/config/breezeexceptionlistwidget.h
+       kdecoration/config/breezeexceptionmodel.cpp
+       kdecoration/config/breezeexceptionmodel.h
+       kdecoration/config/breezeitemmodel.cpp
+       kdecoration/config/breezeitemmodel.h
+       kdecoration/config/breezelistmodel.h
+       kstyle/config/breezeconfigdialog.cpp
+       kstyle/config/breezeconfigdialog.h
+       kstyle/config/main.cpp
+Copyright: 2009-2010, Hugo Pereira Da Costa <hugo.pereira@free.fr>
+           2001, Karol Szwed <gallium@kde.org>
+           2004-2008, Lubos Lunak <l.lunak@kde.org>
+License: Expat
+
+Files: kdecoration/breeze.h
+       kdecoration/breezebutton.cpp
+       kdecoration/breezebutton.h
+       kdecoration/breezecolorsettings.cpp
+       kdecoration/breezecolorsettings.h
+       kdecoration/breezedecoration.cpp
+       kdecoration/breezedecoration.h
+       kdecoration/breezesettingsprovider.cpp
+       kdecoration/breezesettingsprovider.h
+Copyright: 2014, Hugo Pereira Da Costa <hugo.pereira@free.fr>
+           2014, Martin Gräßlin <mgraesslin@kde.org>
+License: GPL-2+3+KDEeV
+
+Files: po/ca/breeze_kwin_deco.po
+       po/ca/breeze_style_config.po
+       po/uk/breeze_kwin_deco.po
+       po/uk/breeze_style_config.po
+Copyright: 2014-2015, This_file_is_part_of_KDE
+License: LGPL-2.1+3+KDEeV
+ This file is distributed under the license LGPL version 2.1 or
+ version 3 or later versions approved by the membership of KDE e.V.
+ -
+ On Debian systems, the complete text of the GNU Lesser General Public License
+ version 2.1 can be found in `/usr/share/common-licenses/LGPL-2.1', likewise,
+ the complete text of the GNU Lesser General Public License version 3 can be
+ found in `/usr/share/common-licenses/LGPL-3'.
+
+Files: kstyle/animations/breezeheaderviewdata.cpp
+       kstyle/animations/breezetabbardata.cpp
+       kstyle/breezewindowmanager.cpp
+Copyright: 2009-2014, Hugo Pereira Da Costa <hugo.pereira@free.fr>
+           2007, Thomas Luebking <thomas.luebking@web.de>
+License: Expat_and_GPL-2+
+ This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
  (at your option) any later version.
  .
- This package is distributed in the hope that it will be useful,
+ This program is distributed in the hope that it will be useful,
  but WITHOUT ANY WARRANTY; without even the implied warranty of
  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  GNU General Public License for more details.
  .
  You should have received a copy of the GNU General Public License
- along with this program. If not, see <http://www.gnu.org/licenses/>
+ along with this program; if not, write to the
+ Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA .
+ ---
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to
+ deal in the Software without restriction, including without limitation the
+ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
  .
- On Debian systems, the complete text of the GNU General
- Public License version 2 can be found in "/usr/share/common-licenses/GPL-2".
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ IN THE SOFTWARE.
+ -
+ On Debian systems, the complete text of the GNU General Public License
+ version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+Files: qtquickcontrols/GroupBoxStyle.qml
+Copyright: 2013, Digia Plc and/or its subsidiary(-ies)
+License: BSD-3-clause
 
 Files: cursors/*
        icons/*
@@ -32,7 +118,8 @@ Files: cursors/*
        wallpapers/*
 Copyright: 2014 Uri Herrera <kaisergreymon99@gmail.com> and others
 Comment: Some svg files have outdated license information (CC-BY-SA) in
- their metadata. This has been fixed in the upstream Git repository.
+ their metadata. They are actually licensed under LGPL-3+.
+ This has been fixed in the upstream Git repository.
  See https://github.com/NitruxSA/plasma-next-icons/commit/b5e64d628df06687d2cec7424b466a15274e52ed
 License: LGPL-3+
  This library is free software; you can redistribute it and/or
@@ -75,41 +162,11 @@ License: LGPL-3+
  On Debian systems, the complete text of the  GNU Lesser General Public
  License version 3 can be found in "/usr/share/common-licenses/LGPL-3".
 
-Files: kdecoration/breezeexceptionlist.*
-       kdecoration/config/breezeconfigwidget.*
-       kdecoration/config/breezedetectwidget.*
-       kdecoration/config/breezeexceptiondialog.*
-       kdecoration/config/breezeexceptionmodel.*
-       kdecoration/config/breezeitemmodel.*
-       kdecoration/config/breezeconfig.*
-       kdecoration/config/breezeexceptionlistwidget.*
-       kdecoration/config/breezelistmodel.h
-       kstyle/config/breezeconfigdialog.*
-       kstyle/config/main.cpp
-Copyright: 2009-2010 Hugo Pereira Da Costa <hugo.pereira@free.fr>
-           2004-2008 Lubos Lunak <l.lunak@kde.org>
-           2001 Karol Szwed <gallium@kde.org>
-License: Expat
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to
- deal in the Software without restriction, including without limitation the
- rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
- sell copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
- .
- The above copyright notice and this permission notice shall be included in
- all copies or substantial portions of the Software.
- .
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
- IN THE SOFTWARE.
+Files: debian/*
+Copyright: 2014, Jonathan Riddell <jriddell@ubuntu.com>
+           2014, Scarlett Clark <scarlett@scarlettgatelyclark.com>
+License: GPL-2+
 
-Files: qtquickcontrols/GroupBoxStyle.qml
-Copyright: 2013 Digia Plc and/or its subsidiary(-ies)
 License: BSD-3-clause
  Redistribution and use in source and binary forms, with or without
  modification, are permitted provided that the following conditions are
@@ -135,3 +192,61 @@ License: BSD-3-clause
  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+License: Expat
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to
+ deal in the Software without restriction, including without limitation the
+ rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ sell copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+ .
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+ .
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ IN THE SOFTWARE.
+
+License: GPL-2+
+ This package is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 2 of the License, or
+ (at your option) any later version.
+ .
+ This package is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>
+ -
+ On Debian systems, the complete text of the GNU General Public License
+ version 2 can be found in `/usr/share/common-licenses/GPL-2'.
+
+License: GPL-2+3+KDEeV
+ This program is free software; you can redistribute it and/or
+ modify it under the terms of the GNU General Public License as
+ published by the Free Software Foundation; either version 2 of
+ the License or (at your option) version 3 or any later version
+ accepted by the membership of KDE e.V. (or its successor approved
+ by the membership of KDE e.V.), which shall act as a proxy
+ defined in Section 14 of version 3 of the license.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ -
+ On Debian systems, the complete text of the GNU General Public License
+ version 2 can be found in `/usr/share/common-licenses/GPL-2', likewise, the
+ complete text of the GNU General Public License version 3 can be found in
+ `/usr/share/common-licenses/GPL-3'.

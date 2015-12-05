@@ -1,14 +1,20 @@
 #!/bin/sh
-ICONDIR=usr/share/icons
-WRAPPERDIR=etc/X11/cursors
-CURDIR=`pwd`
+set -e
 
-theme=$1
+ICONDIR=/usr/share/icons
+WRAPPERDIR=/etc/X11/cursors
+: ${CURDIR:=`pwd`}
 
-mkdir -p debian/tmp/${WRAPPERDIR}
-cd debian/tmp/${ICONDIR}
-grep -v Inherits ${CURDIR}/debian/tmp/${ICONDIR}/${theme}/index.theme > tmp || exit 1
-echo "Inherits=${theme}" >> tmp  || exit 1
-install -m 644 tmp ${CURDIR}/debian/tmp/${WRAPPERDIR}/${theme}.theme || exit 1
-rm tmp || exit 1
-exit 0
+tmp="$(mktemp)"
+
+while [ $# -gt 0 ]; do
+    theme=$1
+    shift
+
+    mkdir -p ${CURDIR}/debian/tmp${WRAPPERDIR}
+    cd ${CURDIR}/debian/tmp${ICONDIR}
+    grep -v Inherits ${CURDIR}/debian/tmp${ICONDIR}/${theme}/index.theme > "$tmp"
+    echo "Inherits=${theme}" >> "$tmp"
+    install -m 644 "$tmp" ${CURDIR}/debian/tmp${WRAPPERDIR}/${theme}.theme
+    rm "$tmp"
+done

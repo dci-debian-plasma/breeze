@@ -1,28 +1,30 @@
 #! /bin/sh
-
 set -e
 
-MAINPRIORITY=102 # DMZ+2 (was +1 previously, need upgrade)
-SECONDARYPRIORITY=41 # Oxygen+1
 TARGET=/usr/share/icons/default/index.theme
 ICONDIR=/etc/X11/cursors
-MAIN_THEMES="breeze_cursors"
-SECONDARY_THEMES="Breeze_Snow"
 
-for theme in $MAIN_THEMES; do
-    update-alternatives --install $TARGET \
-        x-cursor-theme \
-            $ICONDIR/$theme.theme \
-            $MAINPRIORITY
-done
+# breeze_cursors with 102 (DMZ+2) priority
+update-alternatives --install $TARGET x-cursor-theme \
+    $ICONDIR/breeze_cursors.theme 102
 
-for theme in $SECONDARY_THEMES; do
-    update-alternatives --install $TARGET \
-        x-cursor-theme \
-            $ICONDIR/$theme.theme \
-            $SECONDARYPRIORITY
-done
+# Breeze_Snow with 41 (Oxygen+1) priority
+update-alternatives --install $TARGET x-cursor-theme \
+    $ICONDIR/Breeze_Snow.theme 41
+
+case "$1" in
+    configure)
+        # On upgrade from a version that was badly managing the
+        # x-cursor-theme, remove the old ones from the alternatives.
+        version="$2"
+        if [ -n "$version" ] && \
+                dpkg --compare-versions "$version" lt "4:5.4.1-2~"; then
+            update-alternatives --remove x-cursor-theme \
+                /usr/share/icons/Breeze_Snow/index.theme    || true
+            update-alternatives --remove x-cursor-theme \
+                /usr/share/icons/breeze_cursors/index.theme || true
+        fi
+        ;;
+esac
 
 #DEBHELPER#
-
-exit 0
