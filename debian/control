@@ -32,11 +32,7 @@ Vcs-Git: git://anonscm.debian.org/pkg-kde/plasma/breeze.git
 Package: breeze
 Architecture: any
 Depends: breeze-cursor-theme (= ${source:Version}),
-<<<<<<< HEAD
-         breeze-icon-theme,
-=======
          breeze-icon-theme (= ${source:Version}),
->>>>>>> master
          kde-style-breeze (= ${binary:Version}),
          kde-style-breeze-qt4 (= ${binary:Version}),
          kwin-style-breeze (= ${binary:Version}),
@@ -64,8 +60,6 @@ Description: Default Plasma cursor theme.
  .
  This package is part of the Breeze theme module.
 
-<<<<<<< HEAD
-=======
 Package: breeze-icon-theme
 Architecture: all
 Depends: oxygen-icon-theme, ${misc:Depends}, ${shlibs:Depends}
@@ -74,7 +68,6 @@ Description: Default Plasma icon theme.
  .
  This package is part of the Breeze theme module.
 
->>>>>>> master
 Package: kwin-style-breeze
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}

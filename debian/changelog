@@ -7,6 +7,7 @@ breeze (4:5.4.95-0ubuntu1) UNRELEASED; urgency=medium
   * Debian merge: Remaining changes:
     Split breeze icons to frameworks. 
   * Fix stable->unstable merge. 
+  * Fix control file merge. 
 
  -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 22 Nov 2015 14:00:06 +0000
 
