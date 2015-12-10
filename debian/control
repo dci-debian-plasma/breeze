@@ -22,6 +22,7 @@ Build-Depends: cmake (>= 2.8.12),
                libx11-dev,
                pkg-config,
                pkg-kde-tools (>= 0.15.15ubuntu1~),
+               plasma-framework-dev,
                qtbase5-dev (>= 5.4)
 Standards-Version: 3.9.6
 Homepage: https://projects.kde.org/projects/kde/workspace/breeze
