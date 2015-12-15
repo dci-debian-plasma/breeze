@@ -1,9 +1,10 @@
-breeze (4:5.5.0-1~) UNRELEASED; urgency=medium
+breeze (4:5.5.1-1~) UNRELEASED; urgency=medium
 
   * New upstream release (5.5.0).
   * Follow upstream package splitage.
+  * New upstream release (5.5.1).
 
- -- Maximiliano Curia <maxy@debian.org>  Thu, 10 Dec 2015 14:10:11 +0100
+ -- Maximiliano Curia <maxy@debian.org>  Tue, 15 Dec 2015 17:14:56 +0100
 
 breeze (4:5.4.3-1) unstable; urgency=medium
 
