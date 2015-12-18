@@ -1,4 +1,4 @@
-breeze (4:5.4.95-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.5.1-0ubuntu1) UNRELEASED; urgency=medium
 
   [ Jonathan Riddell ]
   * Remove breeze-icon-theme now part of Frameworks
@@ -8,8 +8,9 @@ breeze (4:5.4.95-0ubuntu1) UNRELEASED; urgency=medium
     Split breeze icons to frameworks. 
   * Fix stable->unstable merge. 
   * Fix control file merge. 
+  * New upstream release Xenial
 
- -- Jonathan Riddell <jriddell@ubuntu.com>  Sun, 22 Nov 2015 14:00:06 +0000
+ -- Scarlett Clark <sgclark@kubuntu.org>  Fri, 18 Dec 2015 07:21:37 -0800
 
 breeze (4:5.4.3-0ubuntu1) xenial; urgency=medium
 
