@@ -6,7 +6,7 @@ Uploaders: Maximiliano Curia <maxy@debian.org>
 Build-Depends: cmake (>= 2.8.12),
                debhelper (>= 9),
                extra-cmake-modules (>= 5.17.0~),
-               kdelibs5-dev (>= 4:4.14.15~),
+               kdelibs5-dev,
                libkdecorations2-dev (>= 4:5.5.1~),
                libkf5config-dev (>= 5.17.0~),
                libkf5configwidgets-dev (>= 5.17.0~),
