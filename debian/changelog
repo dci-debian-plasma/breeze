@@ -14,7 +14,30 @@ breeze (4:5.5.3-0ubuntu1) UNRELEASED; urgency=medium
   * new upstream release
   * New upstream release
 
+  [ Scarlett Clark ]
+  * Merge unstable to get debian merge changes. 
+
  -- Clive Johnston <clivejo@aol.com>  Thu, 07 Jan 2016 17:51:33 +0000
+
+breeze (4:5.5.2-0ubuntu1) UNRELEASED; urgency=medium
+
+  [ Jonathan Riddell ]
+  * Remove breeze-icon-theme now part of Frameworks
+
+  [ Scarlett Clark ]
+  * Debian merge: Remaining changes:
+    Split breeze icons to frameworks. 
+  * Fix stable->unstable merge. 
+  * Fix control file merge. 
+  * New upstream release Xenial
+
+  [ Clive Johnston ]
+  * new upstream release
+
+  [ Bhushan Shah ]
+  * Don't build-depend on the specific kdelibs5-dev version
+
+ -- Clive Johnston <clivejo@aol.com>  Tue, 29 Dec 2015 17:33:36 +0000
 
 breeze (4:5.4.3-0ubuntu1) xenial; urgency=medium
 
