@@ -34,12 +34,11 @@ Architecture: any
 Depends: breeze-cursor-theme (= ${source:Version}),
          breeze-icon-theme,
          kde-style-breeze (= ${binary:Version}),
-         kde-style-breeze-qt4 (= ${binary:Version}),
          kwin-style-breeze (= ${binary:Version}),
          qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: kde-style-qtcurve
+Recommends: kde-style-breeze-qt4 (= ${binary:Version}), kde-style-qtcurve
 Suggests: orion-gtk-theme
 Breaks: kde-style-breeze (<< 4:5.2.2+git20150325)
 Replaces: kde-style-breeze (<< 4:5.2.2+git20150325)
