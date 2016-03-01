@@ -30,4 +30,4 @@ override_dh_install:
 	$(overridden_command)
 
 override_dh_strip:
-	$(overridden_command) --dbg-package=breeze-dbg
+	$(overridden_command) --dbgsym-migration='breeze-dbg (<= 4:5.5.5-1~~)'
