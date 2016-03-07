@@ -1,4 +1,4 @@
-breeze (4:5.5.4-0ubuntu1) UNRELEASED; urgency=medium
+breeze (4:5.5.4-0ubuntu1) xenial; urgency=medium
 
   [ Jonathan Riddell ]
   * Remove breeze-icon-theme now part of Frameworks
@@ -22,7 +22,7 @@ breeze (4:5.5.4-0ubuntu1) UNRELEASED; urgency=medium
   [ Clive Johnston ]
   * New upstream release
 
- -- Clive Johnston <clivejo@aol.com>  Wed, 27 Jan 2016 20:06:22 +0000
+ -- Clive Johnston <clivejo@aol.com>  Mon, 07 Mar 2016 21:18:15 +0100
 
 breeze (4:5.4.3-0ubuntu1) xenial; urgency=medium
 
