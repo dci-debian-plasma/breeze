@@ -13,15 +13,11 @@ breeze (4:5.5.4-1) experimental; urgency=medium
   * New upstream release (5.5.3).
   * New upstream release (5.5.4).
 
- -- Maximiliano Curia <maxy@debian.org>  Wed, 27 Jan 2016 16:49:17 +0100
-
-breeze (4:5.4.3-2) UNRELEASED; urgency=medium
-
   [ Dmitry Shachnev ]
   * Recommend kde-style-breeze-qt4 instead of depending on it, to avoid hard
     dependencies on Qt 4 (closes: #808458).
 
- -- Debian Qt/KDE Maintainers <debian-qt-kde@lists.debian.org>  Tue, 12 Jan 2016 17:06:35 +0300
+ -- Maximiliano Curia <maxy@debian.org>  Wed, 27 Jan 2016 16:49:17 +0100
 
 breeze (4:5.4.3-1) unstable; urgency=medium
 
