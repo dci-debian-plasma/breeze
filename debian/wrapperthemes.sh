@@ -13,7 +13,7 @@ while [ $# -gt 0 ]; do
 
     mkdir -p ${CURDIR}/debian/tmp${WRAPPERDIR}
     cd ${CURDIR}/debian/tmp${ICONDIR}
-    grep -v Inherits ${CURDIR}/debian/tmp${ICONDIR}/${theme}/index.theme > "$tmp"
+    grep -a -v Inherits ${CURDIR}/debian/tmp${ICONDIR}/${theme}/index.theme > "$tmp"
     echo "Inherits=${theme}" >> "$tmp"
     install -m 644 "$tmp" ${CURDIR}/debian/tmp${WRAPPERDIR}/${theme}.theme
     rm "$tmp"
