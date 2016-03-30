@@ -3,7 +3,8 @@ breeze (4:5.5.5-1~) UNRELEASED; urgency=medium
   * New upstream release (5.5.5).
 
   [ Eduard Sanou ]
-  * Fix misdetection as binary input in grep when LC_ALL=C
+  * Fix misdetection as binary input in grep when LC_ALL=C. (Closes: #819512)
+    Thanks to Eduard Sanou for the report and patch.
 
  -- Maximiliano Curia <maxy@debian.org>  Tue, 01 Mar 2016 17:31:31 +0100
 
