@@ -3,6 +3,5 @@ usr/lib/*/kconf_update_bin
 usr/share/icons/hicolor/*/apps/breeze-settings.*
 usr/share/icons/hicolor/scalable/apps/breeze-settings.svgz
 usr/share/kconf_update
-usr/share/kservices5/plasma-lookandfeel-org.kde.breezedark.desktop.desktop
 usr/share/plasma/look-and-feel/org.kde.breezedark.desktop/
 usr/share/wallpapers/Next
