@@ -51,6 +51,16 @@ Description: Default Plasma theme (meta-package).
  .
  This package is part of the KDE base workspace module.
 
+Package: breeze-dev
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Default Plasma theme (development files).
+ This is the default theme for the KDE Plasma desktop.
+ .
+ This package includes development files.
+ .
+ This package is part of the KDE base workspace module.
+
 Package: breeze-cursor-theme
 Architecture: all
 Depends: ${misc:Depends}, ${shlibs:Depends}
