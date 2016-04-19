@@ -1,6 +1,6 @@
-breeze (4:5.6.2-1~2.gbpd7fdd1) UNRELEASED; urgency=medium
+breeze (4:5.6.3-1~1.gbpd1a210) UNRELEASED; urgency=medium
 
-  ** SNAPSHOT build @d7fdd1ac7a931f08b9bee24b36a87e7fba4da4a0 **
+  ** SNAPSHOT build @d1a210945074acc6f4531fdf437b7818e69f40df **
 
   * New upstream release (5.5.5).
 
@@ -10,6 +10,7 @@ breeze (4:5.6.2-1~2.gbpd7fdd1) UNRELEASED; urgency=medium
 
   [ Automatic packaging ]
   * Update build-deps and deps with the info from cmake
+  * Bump Standards-Version to 3.9.8
 
   [ Maximiliano Curia ]
   * Add upstream metadata (DEP-12)
@@ -21,7 +22,7 @@ breeze (4:5.6.2-1~2.gbpd7fdd1) UNRELEASED; urgency=medium
   [ Maximiliano Curia ]
   * Update install files
 
- -- Maximiliano Curia <maxy@gnuservers.com.ar>  Fri, 08 Apr 2016 16:06:30 +0200
+ -- Automatic packaging <maxy+jenkins@gnuservers.com.ar>  Tue, 19 Apr 2016 18:06:40 +0200
 
 breeze (4:5.5.4-1) experimental; urgency=medium
 
