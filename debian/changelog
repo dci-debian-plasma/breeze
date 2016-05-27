@@ -1,6 +1,4 @@
-breeze (4:5.6.4-1~1.gbp3aa9e0) UNRELEASED; urgency=medium
-
-  ** SNAPSHOT build @3aa9e07de0968e72c9a4d564ccb920cefd7d7003 **
+breeze (4:5.6.4-1) unstable; urgency=medium
 
   * New upstream release (5.5.5).
 
@@ -15,16 +13,9 @@ breeze (4:5.6.4-1~1.gbp3aa9e0) UNRELEASED; urgency=medium
   [ Maximiliano Curia ]
   * Add upstream metadata (DEP-12)
   * debian/control: Update Vcs-Browser and Vcs-Git fields
-  * UNRELEASED
-
-  [ Automatic packaging ]
-  * Update build-deps and deps with the info from cmake
-  * Update changelog for 4:5.6.2-1~1.gbpb3f1f9 release
-
-  [ Maximiliano Curia ]
   * Update install files
 
- -- Maximiliano Curia <jenkins@amadeus.gnuservers.com.ar>  Wed, 11 May 2016 00:06:39 +0200
+ -- Maximiliano Curia <maxy@debian.org>  Sat, 28 May 2016 01:26:39 +0200
 
 breeze (4:5.5.4-1) experimental; urgency=medium
 
