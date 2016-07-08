@@ -1,10 +1,16 @@
-breeze (4:5.7.0-1~1.gbp59444a) UNRELEASED; urgency=medium
+breeze (4:5.7.0-1~2.gbp1fb80b) UNRELEASED; urgency=medium
 
+  ** SNAPSHOT build @1fb80bfba126984f4ff3c6e8f400ca3ae6b76d8f **
+
+  [ Maximiliano Curia ]
   ** SNAPSHOT build @59444aeabcd7d36c8f999b0dcfb7c8b5fdb5ddcf **
 
   * UNRELEASED
 
- -- Maximiliano Curia <jenkins@gnuservers.com.ar>  Tue, 05 Jul 2016 18:06:29 +0200
+  [ Harald Sitter ]
+  * add new breeze-dev package for cmake config
+
+ -- Harald Sitter <sitter@kde.org>  Fri, 08 Jul 2016 15:46:20 +0200
 
 breeze (4:5.6.5-1) unstable; urgency=medium
 
