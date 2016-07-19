@@ -1,3 +1,9 @@
+breeze (4:5.7.2-0neon) xenial; urgency=medium
+
+  * New release
+
+ -- Neon CI <neon@kde.org>  Tue, 19 Jul 2016 13:45:59 +0000
+
 breeze (4:5.7.1-0neon) xenial; urgency=medium
 
   * New release
