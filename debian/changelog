@@ -1,12 +1,13 @@
-breeze (4:5.7.4-1~1.gbpf64e64) UNRELEASED; urgency=medium
+breeze (4:5.7.4-1~2.gbp901045) UNRELEASED; urgency=medium
 
-  ** SNAPSHOT build @f64e643c308621aa1eb83e0b30606b94b945374a **
+  ** SNAPSHOT build @9010456d95257361a4955405a906614b0f982d18 **
 
   * UNRELEASED
   * UNRELEASED
   * UNRELEASED
+  * Bump group breaks (5.7)
 
- -- Maximiliano Curia <jenkins@gnuservers.com.ar>  Wed, 24 Aug 2016 18:06:24 +0200
+ -- Maximiliano Curia <maxy@gnuservers.com.ar>  Fri, 26 Aug 2016 11:06:15 +0200
 
 breeze (4:5.7.0-1) unstable; urgency=medium
 
