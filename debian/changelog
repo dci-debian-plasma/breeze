@@ -1,13 +1,9 @@
-breeze (4:5.7.4-1~2.gbp901045) UNRELEASED; urgency=medium
+breeze (4:5.7.4-1) unstable; urgency=medium
 
-  ** SNAPSHOT build @9010456d95257361a4955405a906614b0f982d18 **
-
-  * UNRELEASED
-  * UNRELEASED
-  * UNRELEASED
+  * New upstream release (5.7.4)
   * Bump group breaks (5.7)
 
- -- Maximiliano Curia <maxy@gnuservers.com.ar>  Fri, 26 Aug 2016 11:06:15 +0200
+ -- Maximiliano Curia <maxy@debian.org>  Sat, 27 Aug 2016 00:12:19 +0200
 
 breeze (4:5.7.0-1) unstable; urgency=medium
 
