@@ -16,6 +16,7 @@ Build-Depends: cmake (>= 2.8.12),
                libkf5iconthemes-dev (>= 5.2.2),
                libkf5kcmutils-dev (>= 5.2.0),
                libkf5package-dev,
+               libkf5plasma-dev,
                libkf5service-dev (>= 5.2.0),
                libkf5style-dev (>= 5.2.0),
                libkf5windowsystem-dev (>= 5.2.0),
@@ -23,7 +24,6 @@ Build-Depends: cmake (>= 2.8.12),
                libx11-dev,
                pkg-config,
                pkg-kde-tools (>= 0.15.15ubuntu1~),
-               plasma-framework-dev,
                qtbase5-dev (>= 5.4)
 Standards-Version: 3.9.8
 Homepage: https://projects.kde.org/projects/kde/workspace/breeze
