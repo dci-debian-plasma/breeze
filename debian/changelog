@@ -1,12 +1,9 @@
-breeze (4:5.8.0-1~2.gbpc364fe) UNRELEASED; urgency=medium
+breeze (4:5.8.0-1) unstable; urgency=medium
 
-  ** SNAPSHOT build @c364fe1d6ad513bb597550335199f5c9f55a795b **
+  * New upstream release (5.8.0)
+  * Bump group breaks (5.8)
 
-  * UNRELEASED
-  * UNRELEASED
-  * UNRELEASED
-
- -- Maximiliano Curia <jenkins@gnuservers.com.ar>  Wed, 05 Oct 2016 20:06:31 +0200
+ -- Maximiliano Curia <maxy@debian.org>  Fri, 07 Oct 2016 14:08:25 +0200
 
 breeze (4:5.7.4-1) unstable; urgency=medium
 
