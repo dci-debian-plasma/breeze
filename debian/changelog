@@ -1,3 +1,11 @@
+breeze (4:5.8.3-1~1.gbpb7ea93) UNRELEASED; urgency=medium
+
+  ** SNAPSHOT build @b7ea93fc2e11af133942cb3da483c4eea44cb522 **
+
+  * UNRELEASED
+
+ -- Maximiliano Curia <jenkins@gnuservers.com.ar>  Sun, 06 Nov 2016 00:06:40 +0100
+
 breeze (4:5.8.2-1) unstable; urgency=medium
 
   * New upstream release (5.8.2)
