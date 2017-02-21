@@ -1,3 +1,9 @@
+breeze (4:5.8.6-0neon) xenial; urgency=medium
+
+  * New Plasma LTS release
+
+ -- Jonathan Riddell <jriddell@ubuntu.com>  Tue, 21 Feb 2017 17:16:28 +0000
+
 breeze (4:5.8.5-0neon) xenial; urgency=medium
 
   * New release
