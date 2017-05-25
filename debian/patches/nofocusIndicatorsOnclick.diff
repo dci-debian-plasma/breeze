@@ -1,0 +1,471 @@
+diff --git a/kstyle/breeze.kcfg b/kstyle/breeze.kcfg
+index 63b11a9..61fa1d7 100644
+--- a/kstyle/breeze.kcfg
++++ b/kstyle/breeze.kcfg
+@@ -91,6 +91,11 @@
+     <entry name="ViewDrawFocusIndicator" type="Bool">
+       <default>true</default>
+     </entry>
++
++    <!-- Other focus indicators -->
++    <entry name="DrawFocusIndicatorOnClick" type="Bool">
++      <default>false</default>
++    </entry>
+     
+     <!-- sliders -->
+     <entry name="SliderDrawTickMarks" type="Bool">
+diff --git a/kstyle/breezestyle.cpp b/kstyle/breezestyle.cpp
+index f097a78..66081b3 100644
+--- a/kstyle/breezestyle.cpp
++++ b/kstyle/breezestyle.cpp
+@@ -337,6 +337,7 @@ namespace Breeze
+                 if( itemView && itemView->itemDelegate() && itemView->itemDelegate()->inherits( "QComboBoxDelegate" ) )
+                 { itemView->setItemDelegate( new BreezePrivate::ComboBoxItemDelegate( itemView ) ); }
+             }
++            addEventFilter( widget );
+ 
+         } else if( widget->inherits( "QComboBoxPrivateContainer" ) ) {
+ 
+@@ -347,6 +348,8 @@ namespace Breeze
+ 
+             setTranslucentBackground( widget );
+ 
++        } else if( qobject_cast<QCheckBox*>( widget ) || qobject_cast<QRadioButton*>( widget ) || qobject_cast<QTabBar*>( widget ) || qobject_cast<QPushButton*>( widget )) {
++            addEventFilter( widget );
+         }
+ 
+         // base class polishing
+@@ -440,7 +443,12 @@ namespace Breeze
+             qobject_cast<QDockWidget*>( widget ) ||
+             qobject_cast<QMdiSubWindow*>( widget ) ||
+             widget->inherits( "QComboBoxPrivateContainer" ) )
+-            { widget->removeEventFilter( this ); }
++        {
++            widget->removeEventFilter( this );
++        } else if( !StyleConfigData::drawFocusIndicatorOnClick() && (!StyleConfigData::drawFocusIndicatorOnClick() && (qobject_cast<QCheckBox*>( widget ) || qobject_cast<QRadioButton*>( widget ) || qobject_cast<QTabBar*>( widget ) || qobject_cast<QTabBar*>( widget ) || qobject_cast<QComboBox*>( widget ) || qobject_cast<QPushButton*>( widget )))) {
++            _focusReasonTracker.remove( widget );
++            widget->removeEventFilter( this );
++        }
+ 
+         ParentStyleClass::unpolish( widget );
+ 
+@@ -1005,6 +1013,11 @@ namespace Breeze
+         if( widget->inherits( "QAbstractScrollArea" ) || widget->inherits( "KTextEditor::View" ) ) { return eventFilterScrollArea( widget, event ); }
+         else if( widget->inherits( "QComboBoxPrivateContainer" ) ) { return eventFilterComboBoxContainer( widget, event ); }
+ 
++        if (event->type() == QEvent::FocusIn) {
++            QFocusEvent *fe = static_cast<QFocusEvent *>(event);
++            _focusReasonTracker[widget] = fe->reason();
++        }
++
+         // fallback
+         return ParentStyleClass::eventFilter( object, event );
+ 
+@@ -3410,11 +3423,14 @@ namespace Breeze
+         const bool hasFocus( ( enabled && ( state & State_HasFocus ) ) && !( widget && widget->focusProxy()));
+         const bool sunken( state & ( State_On|State_Sunken ) );
+         const bool flat( buttonOption->features & QStyleOptionButton::Flat );
++        const bool hasFocusFromKeyboard = hasFocus && (StyleConfigData::drawFocusIndicatorOnClick() || (_focusReasonTracker.contains(widget) && 
++                (_focusReasonTracker[widget] == Qt::TabFocusReason || _focusReasonTracker[widget] == Qt::BacktabFocusReason)));
++        
+ 
+         // update animation state
+         // mouse over takes precedence over focus
+         _animations->widgetStateEngine().updateState( widget, AnimationHover, mouseOver );
+-        _animations->widgetStateEngine().updateState( widget, AnimationFocus, hasFocus && !mouseOver );
++        _animations->widgetStateEngine().updateState( widget, AnimationFocus, hasFocusFromKeyboard && !mouseOver );
+ 
+         const AnimationMode mode( _animations->widgetStateEngine().buttonAnimationMode( widget ) );
+         const qreal opacity( _animations->widgetStateEngine().buttonOpacity( widget ) );
+@@ -3424,7 +3440,7 @@ namespace Breeze
+ 
+             // define colors and render
+             const QPalette& palette( option->palette );
+-            const QColor color( _helper->toolButtonColor( palette, mouseOver, hasFocus, sunken, opacity, mode ) );
++            const QColor color( _helper->toolButtonColor( palette, mouseOver, hasFocusFromKeyboard, sunken, opacity, mode ) );
+             _helper->renderToolButtonFrame( painter, rect, color, sunken );
+ 
+         } else {
+@@ -3439,11 +3455,11 @@ namespace Breeze
+             }
+ 
+             const QColor shadow( _helper->shadowColor( palette ) );
+-            const QColor outline( _helper->buttonOutlineColor( palette, mouseOver, hasFocus, opacity, mode ) );
+-            const QColor background( _helper->buttonBackgroundColor( palette, mouseOver, hasFocus, sunken, opacity, mode ) );
++            const QColor outline( _helper->buttonOutlineColor( palette, mouseOver, hasFocusFromKeyboard, opacity, mode ) );
++            const QColor background( _helper->buttonBackgroundColor( palette, mouseOver, hasFocusFromKeyboard, sunken, opacity, mode ) );
+ 
+             // render
+-            _helper->renderButtonFrame( painter, rect, background, outline, shadow, hasFocus, sunken );
++            _helper->renderButtonFrame( painter, rect, background, outline, shadow, hasFocusFromKeyboard, sunken );
+ 
+         }
+ 
+@@ -4123,6 +4139,8 @@ namespace Breeze
+         const bool mouseOver( enabled && (option->state & State_MouseOver) );
+         const bool hasFocus( enabled && !mouseOver && (option->state & State_HasFocus) );
+         const bool flat( buttonOption->features & QStyleOptionButton::Flat );
++        const bool hasFocusFromKeyboard = hasFocus && (StyleConfigData::drawFocusIndicatorOnClick() || (_focusReasonTracker.contains(widget) && 
++                (_focusReasonTracker[widget] == Qt::TabFocusReason || _focusReasonTracker[widget] == Qt::BacktabFocusReason)));
+ 
+         // content
+         const bool hasText( !buttonOption->text.isEmpty() );
+@@ -4137,10 +4155,10 @@ namespace Breeze
+         if( flat )
+         {
+ 
+-            if( hasFocus && sunken ) textRole = QPalette::HighlightedText;
++            if( hasFocusFromKeyboard && sunken ) textRole = QPalette::HighlightedText;
+             else textRole = QPalette::WindowText;
+ 
+-        } else if( hasFocus ) textRole = QPalette::HighlightedText;
++        } else if( hasFocusFromKeyboard ) textRole = QPalette::HighlightedText;
+         else textRole = QPalette::ButtonText;
+ 
+         // menu arrow
+@@ -4207,7 +4225,7 @@ namespace Breeze
+             const QIcon::State iconState( sunken ? QIcon::On : QIcon::Off );
+             QIcon::Mode iconMode;
+             if( !enabled ) iconMode = QIcon::Disabled;
+-            else if( !flat && hasFocus ) iconMode = QIcon::Selected;
++            else if( !flat && hasFocusFromKeyboard ) iconMode = QIcon::Selected;
+             else if( mouseOver && flat ) iconMode = QIcon::Active;
+             else iconMode = QIcon::Normal;
+ 
+@@ -4406,14 +4424,16 @@ namespace Breeze
+             const bool isFocusAnimated( _animations->widgetStateEngine().isAnimated( widget, AnimationFocus ) );
+             const qreal opacity( _animations->widgetStateEngine().opacity( widget, AnimationFocus ) );
+ 
+-            // focus color
+-            QColor focusColor;
+-            if( isFocusAnimated ) focusColor = _helper->alphaColor( _helper->focusColor( palette ), opacity );
+-            else if( hasFocus ) focusColor =  _helper->focusColor( palette );
+-
+             // render focus
+-            _helper->renderFocusLine( painter, textRect, focusColor );
+-
++            if (StyleConfigData::drawFocusIndicatorOnClick() || (_focusReasonTracker.contains(widget) && 
++                (_focusReasonTracker[widget] == Qt::TabFocusReason || _focusReasonTracker[widget] == Qt::BacktabFocusReason))) {
++                // focus color
++                QColor focusColor;
++                if( isFocusAnimated ) focusColor = _helper->alphaColor( _helper->focusColor( palette ), opacity );
++                else if( hasFocus ) focusColor =  _helper->focusColor( palette );
++
++                _helper->renderFocusLine( painter, textRect, focusColor );
++            }
+         }
+ 
+         return true;
+@@ -4435,14 +4455,16 @@ namespace Breeze
+         const bool mouseOver( enabled && (option->state & State_MouseOver) );
+         const bool hasFocus( enabled && !mouseOver && (option->state & State_HasFocus) );
+         const bool flat( !comboBoxOption->frame );
++        const bool hasFocusFromKeyboard = hasFocus && (StyleConfigData::drawFocusIndicatorOnClick() || (_focusReasonTracker.contains(widget) && 
++                (_focusReasonTracker[widget] == Qt::TabFocusReason || _focusReasonTracker[widget] == Qt::BacktabFocusReason)));
+ 
+         QPalette::ColorRole textRole;
+         if( flat )  {
+ 
+-            if( hasFocus && sunken ) textRole = QPalette::HighlightedText;
++            if( hasFocusFromKeyboard && sunken ) textRole = QPalette::HighlightedText;
+             else textRole = QPalette::WindowText;
+ 
+-        } else if( hasFocus ) textRole = QPalette::HighlightedText;
++        } else if( hasFocusFromKeyboard ) textRole = QPalette::HighlightedText;
+         else textRole = QPalette::ButtonText;
+ 
+         // change pen color directly
+@@ -5367,13 +5389,16 @@ namespace Breeze
+         // adjust text rect based on font metrics
+         textRect = option->fontMetrics.boundingRect( textRect, textFlags, tabOption->text );
+ 
+-        // focus color
+-        QColor focusColor;
+-        if( animated ) focusColor = _helper->alphaColor( _helper->focusColor( palette ), opacity );
+-        else if( hasFocus ) focusColor =  _helper->focusColor( palette );
++        if (StyleConfigData::drawFocusIndicatorOnClick() || (_focusReasonTracker.contains(widget) && 
++                (_focusReasonTracker[widget] == Qt::TabFocusReason || _focusReasonTracker[widget] == Qt::BacktabFocusReason))) {
++            // focus color
++            QColor focusColor;
++            if( animated ) focusColor = _helper->alphaColor( _helper->focusColor( palette ), opacity );
++            else if( hasFocus ) focusColor =  _helper->focusColor( palette );
+ 
+-        // render focus line
+-        _helper->renderFocusLine( painter, textRect, focusColor );
++            // render focus line
++            _helper->renderFocusLine( painter, textRect, focusColor );
++        }
+ 
+         if( verticalTabs ) painter->restore();
+ 
+@@ -5956,6 +5981,8 @@ namespace Breeze
+         const bool hasFocus( enabled && ( state & (State_HasFocus | State_Sunken ) ) );
+         const bool editable( comboBoxOption->editable );
+         const bool sunken( state & (State_On|State_Sunken) );
++        const bool hasFocusFromKeyboard = hasFocus && (StyleConfigData::drawFocusIndicatorOnClick() || (_focusReasonTracker.contains(widget) && 
++                (_focusReasonTracker[widget] == Qt::TabFocusReason || _focusReasonTracker[widget] == Qt::BacktabFocusReason)));
+         bool flat( !comboBoxOption->frame );
+ 
+         // frame
+@@ -5982,29 +6009,28 @@ namespace Breeze
+                 }
+ 
+             } else {
+-
+                 // update animation state
+                 // hover takes precedence over focus
+                 _animations->inputWidgetEngine().updateState( widget, AnimationHover, mouseOver );
+-                _animations->inputWidgetEngine().updateState( widget, AnimationFocus, hasFocus && !mouseOver );
++                _animations->inputWidgetEngine().updateState( widget, AnimationFocus, hasFocusFromKeyboard && !mouseOver );
+                 const AnimationMode mode( _animations->inputWidgetEngine().buttonAnimationMode( widget ) );
+                 const qreal opacity( _animations->inputWidgetEngine().buttonOpacity( widget ) );
+ 
+                 if( flat ) {
+ 
+                     // define colors and render
+-                    const QColor color( _helper->toolButtonColor( palette, mouseOver, hasFocus, sunken, opacity, mode ) );
++                    const QColor color( _helper->toolButtonColor( palette, mouseOver, hasFocusFromKeyboard, sunken, opacity, mode ) );
+                     _helper->renderToolButtonFrame( painter, rect, color, sunken );
+ 
+                 } else {
+ 
+                     // define colors
+                     const QColor shadow( _helper->shadowColor( palette ) );
+-                    const QColor outline( _helper->buttonOutlineColor( palette, mouseOver, hasFocus, opacity, mode ) );
+-                    const QColor background( _helper->buttonBackgroundColor( palette, mouseOver, hasFocus, false, opacity, mode ) );
++                    const QColor outline( _helper->buttonOutlineColor( palette, mouseOver, hasFocusFromKeyboard, opacity, mode ) );
++                    const QColor background( _helper->buttonBackgroundColor( palette, mouseOver, hasFocusFromKeyboard, false, opacity, mode ) );
+ 
+                     // render
+-                    _helper->renderButtonFrame( painter, rect, background, outline, shadow, hasFocus, sunken );
++                    _helper->renderButtonFrame( painter, rect, background, outline, shadow, hasFocusFromKeyboard, sunken );
+ 
+                 }
+ 
+@@ -6058,7 +6084,7 @@ namespace Breeze
+                 else arrowColor = _helper->arrowColor( palette, QPalette::WindowText );
+ 
+             } else if( empty || !enabled ) arrowColor = _helper->arrowColor( palette, QPalette::Disabled, QPalette::ButtonText );
+-            else if( hasFocus && !mouseOver ) arrowColor = palette.color( QPalette::HighlightedText );
++            else if( hasFocusFromKeyboard && !mouseOver ) arrowColor = palette.color( QPalette::HighlightedText );
+             else arrowColor = _helper->arrowColor( palette, QPalette::ButtonText );
+ 
+             // arrow rect
+diff --git a/kstyle/breezestyle.h b/kstyle/breezestyle.h
+index ec58477..bf06b2e 100644
+--- a/kstyle/breezestyle.h
++++ b/kstyle/breezestyle.h
+@@ -531,6 +531,9 @@ namespace Breeze
+         //! styled painting for KCapacityBar
+         QStyle::ControlElement CE_CapacityBar;
+ 
++        //* keep track of focus reasons for some widgets (radiobuttons, checkboxes) in order to decide wether paint the focus rect
++        QHash<const QWidget *, Qt::FocusReason> _focusReasonTracker;
++        
+         //@}
+ 
+     };
+diff --git a/kstyle/config/breezestyleconfig.cpp b/kstyle/config/breezestyleconfig.cpp
+index 6b00dad..625c63d 100644
+--- a/kstyle/config/breezestyleconfig.cpp
++++ b/kstyle/config/breezestyleconfig.cpp
+@@ -52,6 +52,7 @@ namespace Breeze
+         connect( _tabBarDrawCenteredTabs, SIGNAL(toggled(bool)), SLOT(updateChanged()) );
+         connect( _toolBarDrawItemSeparator, SIGNAL(toggled(bool)), SLOT(updateChanged()) );
+         connect( _viewDrawFocusIndicator, SIGNAL(toggled(bool)), SLOT(updateChanged()) );
++        connect( _drawFocusIndicatorOnClick, SIGNAL(toggled(bool)), SLOT(updateChanged()) );
+         connect( _dockWidgetDrawFrame, SIGNAL(toggled(bool)), SLOT(updateChanged()) );
+         connect( _titleWidgetDrawFrame, SIGNAL(toggled(bool)), SLOT(updateChanged()) );
+         connect( _sidePanelDrawFrame, SIGNAL(toggled(bool)), SLOT(updateChanged()) );
+@@ -73,6 +74,7 @@ namespace Breeze
+         StyleConfigData::setTabBarDrawCenteredTabs( _tabBarDrawCenteredTabs->isChecked() );
+         StyleConfigData::setToolBarDrawItemSeparator( _toolBarDrawItemSeparator->isChecked() );
+         StyleConfigData::setViewDrawFocusIndicator( _viewDrawFocusIndicator->isChecked() );
++        StyleConfigData::setDrawFocusIndicatorOnClick( _drawFocusIndicatorOnClick->isChecked() );
+         StyleConfigData::setDockWidgetDrawFrame( _dockWidgetDrawFrame->isChecked() );
+         StyleConfigData::setTitleWidgetDrawFrame( _titleWidgetDrawFrame->isChecked() );
+         StyleConfigData::setSidePanelDrawFrame( _sidePanelDrawFrame->isChecked() );
+@@ -135,6 +137,7 @@ namespace Breeze
+         if( _tabBarDrawCenteredTabs->isChecked() != StyleConfigData::tabBarDrawCenteredTabs() ) modified = true;
+         else if( _toolBarDrawItemSeparator->isChecked() != StyleConfigData::toolBarDrawItemSeparator() ) modified = true;
+         else if( _viewDrawFocusIndicator->isChecked() != StyleConfigData::viewDrawFocusIndicator() ) modified = true;
++        else if( _drawFocusIndicatorOnClick->isChecked() != StyleConfigData::drawFocusIndicatorOnClick() ) modified = true;
+         else if( _dockWidgetDrawFrame->isChecked() != StyleConfigData::dockWidgetDrawFrame() ) modified = true;
+         else if( _titleWidgetDrawFrame->isChecked() != StyleConfigData::titleWidgetDrawFrame() ) modified = true;
+         else if( _sidePanelDrawFrame->isChecked() != StyleConfigData::sidePanelDrawFrame() ) modified = true;
+@@ -159,6 +162,7 @@ namespace Breeze
+         _tabBarDrawCenteredTabs->setChecked( StyleConfigData::tabBarDrawCenteredTabs() );
+         _toolBarDrawItemSeparator->setChecked( StyleConfigData::toolBarDrawItemSeparator() );
+         _viewDrawFocusIndicator->setChecked( StyleConfigData::viewDrawFocusIndicator() );
++        _drawFocusIndicatorOnClick->setChecked( StyleConfigData::drawFocusIndicatorOnClick() );
+         _dockWidgetDrawFrame->setChecked( StyleConfigData::dockWidgetDrawFrame() );
+         _titleWidgetDrawFrame->setChecked( StyleConfigData::titleWidgetDrawFrame() );
+         _sidePanelDrawFrame->setChecked( StyleConfigData::sidePanelDrawFrame() );
+diff --git a/kstyle/config/ui/breezestyleconfig.ui b/kstyle/config/ui/breezestyleconfig.ui
+index cba874a..3962572 100644
+--- a/kstyle/config/ui/breezestyleconfig.ui
++++ b/kstyle/config/ui/breezestyleconfig.ui
+@@ -6,7 +6,7 @@
+    <rect>
+     <x>0</x>
+     <y>0</y>
+-    <width>522</width>
++    <width>666</width>
+     <height>257</height>
+    </rect>
+   </property>
+@@ -33,33 +33,28 @@
+        <string>General</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout">
+-       <item row="6" column="1">
+-        <widget class="QLabel" name="_windowDragLabel">
+-         <property name="sizePolicy">
+-          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+-           <horstretch>0</horstretch>
+-           <verstretch>0</verstretch>
+-          </sizepolicy>
+-         </property>
++       <item row="0" column="1">
++        <widget class="QCheckBox" name="_tabBarDrawCenteredTabs">
+          <property name="text">
+-          <string>W&amp;indows' drag mode:</string>
+-         </property>
+-         <property name="alignment">
+-          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++          <string>Center tabbar tabs</string>
+          </property>
+-         <property name="buddy">
+-          <cstring>_windowDragMode</cstring>
++        </widget>
++       </item>
++       <item row="1" column="1" colspan="2">
++        <widget class="QCheckBox" name="_toolBarDrawItemSeparator">
++         <property name="text">
++          <string>Draw toolbar item separators</string>
+          </property>
+         </widget>
+        </item>
+-       <item row="2" column="1" colspan="4">
+-        <widget class="QCheckBox" name="_viewDrawFocusIndicator">
++       <item row="4" column="1">
++        <widget class="QCheckBox" name="_sliderDrawTickMarks">
+          <property name="text">
+-          <string>Draw focus indicator in lists</string>
++          <string>Draw slider tick marks</string>
+          </property>
+         </widget>
+        </item>
+-       <item row="5" column="1">
++       <item row="9" column="1">
+         <widget class="QLabel" name="_mnemonicsLabel">
+          <property name="text">
+           <string>&amp;Keyboard accelerators visibility:</string>
+@@ -72,7 +67,7 @@
+          </property>
+         </widget>
+        </item>
+-       <item row="5" column="2" colspan="2">
++       <item row="9" column="2">
+         <widget class="QComboBox" name="_mnemonicsMode">
+          <item>
+           <property name="text">
+@@ -91,7 +86,14 @@
+          </item>
+         </widget>
+        </item>
+-       <item row="5" column="4">
++       <item row="8" column="1" colspan="2">
++        <widget class="QCheckBox" name="_splitterProxyEnabled">
++         <property name="text">
++          <string>Enable extended resize handles</string>
++         </property>
++        </widget>
++       </item>
++       <item row="9" column="3">
+         <spacer name="horizontalSpacer_3">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+@@ -104,7 +106,26 @@
+          </property>
+         </spacer>
+        </item>
+-       <item row="6" column="2" colspan="2">
++       <item row="10" column="1">
++        <widget class="QLabel" name="_windowDragLabel">
++         <property name="sizePolicy">
++          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
++           <horstretch>0</horstretch>
++           <verstretch>0</verstretch>
++          </sizepolicy>
++         </property>
++         <property name="text">
++          <string>W&amp;indows' drag mode:</string>
++         </property>
++         <property name="alignment">
++          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
++         </property>
++         <property name="buddy">
++          <cstring>_windowDragMode</cstring>
++         </property>
++        </widget>
++       </item>
++       <item row="10" column="2">
+         <widget class="QComboBox" name="_windowDragMode">
+          <item>
+           <property name="text">
+@@ -123,7 +144,7 @@
+          </item>
+         </widget>
+        </item>
+-       <item row="7" column="1" colspan="3">
++       <item row="11" column="1" colspan="2">
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+@@ -136,31 +157,17 @@
+          </property>
+         </spacer>
+        </item>
+-       <item row="0" column="1" colspan="4">
+-        <widget class="QCheckBox" name="_tabBarDrawCenteredTabs">
+-         <property name="text">
+-          <string>Center tabbar tabs</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item row="1" column="1" colspan="4">
+-        <widget class="QCheckBox" name="_toolBarDrawItemSeparator">
+-         <property name="text">
+-          <string>Draw toolbar item separators</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item row="3" column="1" colspan="4">
+-        <widget class="QCheckBox" name="_sliderDrawTickMarks">
++       <item row="2" column="1">
++        <widget class="QCheckBox" name="_viewDrawFocusIndicator">
+          <property name="text">
+-          <string>Draw slider tick marks</string>
++          <string>Draw focus indicator in lists</string>
+          </property>
+         </widget>
+        </item>
+-       <item row="4" column="1" colspan="4">
+-        <widget class="QCheckBox" name="_splitterProxyEnabled">
++       <item row="3" column="1">
++        <widget class="QCheckBox" name="_drawFocusIndicatorOnClick">
+          <property name="text">
+-          <string>Enable extended resize handles</string>
++          <string>Draw focus indicator when items get focus by mouse click</string>
+          </property>
+         </widget>
+        </item>
+@@ -388,7 +395,6 @@
+   <tabstop>tabWidget</tabstop>
+   <tabstop>_tabBarDrawCenteredTabs</tabstop>
+   <tabstop>_toolBarDrawItemSeparator</tabstop>
+-  <tabstop>_sliderDrawTickMarks</tabstop>
+   <tabstop>_splitterProxyEnabled</tabstop>
+   <tabstop>_mnemonicsMode</tabstop>
+   <tabstop>_windowDragMode</tabstop>
