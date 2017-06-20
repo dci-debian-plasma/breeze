@@ -42,8 +42,6 @@ Depends: breeze-cursor-theme (= ${source:Version}),
          qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
          ${misc:Depends},
          ${shlibs:Depends}
-Recommends: kde-style-qtcurve
-Suggests: orion-gtk-theme
 Breaks: kde-style-breeze (<< 4:5.2.2+git20150325)
 Replaces: kde-style-breeze (<< 4:5.2.2+git20150325)
 Description: Default Plasma theme (meta-package).
