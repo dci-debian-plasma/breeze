@@ -26,7 +26,7 @@ Build-Depends: cmake (>= 2.8.12),
                pkg-config,
                pkg-kde-tools (>= 0.15.15ubuntu1~),
                qtbase5-dev (>= 5.4),
-               qtdeclarative5-dev
+               qtdeclarative5-dev,
 Standards-Version: 4.0.0
 Homepage: https://projects.kde.org/projects/kde/workspace/breeze
 Vcs-Browser: https://anonscm.debian.org/git/pkg-kde/plasma/breeze.git
@@ -40,28 +40,18 @@ Depends: breeze-cursor-theme (= ${source:Version}),
          kwin-style-breeze (= ${binary:Version}),
          qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
          ${misc:Depends},
-         ${shlibs:Depends}
+         ${shlibs:Depends},
 Recommends: kde-style-breeze-qt4 (= ${binary:Version}), kde-style-qtcurve
 Suggests: orion-gtk-theme
 Breaks: kde-style-breeze (<< 4:5.2.2+git20150325),
         plasma-desktop (<< 4:5.10),
-        plasma-integration (<< 5.10)
+        plasma-integration (<< 5.10),
 Replaces: kde-style-breeze (<< 4:5.2.2+git20150325)
 Description: Default Plasma theme (meta-package).
  This is the default theme for the KDE Plasma desktop.
  .
  This package includes wallpapers, icons, cursors, KWin style and Qt
  widget style for the Plasma 5 desktop.
- .
- This package is part of the KDE base workspace module.
-
-Package: breeze-dev
-Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: Default Plasma theme (development files).
- This is the default theme for the KDE Plasma desktop.
- .
- This package includes development files.
  .
  This package is part of the KDE base workspace module.
 
@@ -73,13 +63,15 @@ Description: Default Plasma cursor theme.
  .
  This package is part of the Breeze theme module.
 
-Package: kwin-style-breeze
+Package: breeze-dev
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
-Description: KWin Breeze Style
- This is the Breeze window manager style for the KDE Plasma 5 desktop.
+Description: Default Plasma theme (development files).
+ This is the default theme for the KDE Plasma desktop.
  .
- This package is part of the Breeze theme module.
+ This package includes development files.
+ .
+ This package is part of the KDE base workspace module.
 
 Package: kde-style-breeze
 Architecture: any
@@ -93,10 +85,18 @@ Package: kde-style-breeze-qt4
 Architecture: any
 Depends: kde-style-breeze (= ${binary:Version}),
          ${misc:Depends},
-         ${shlibs:Depends}
+         ${shlibs:Depends},
 Description: Widget style for Qt 4 and KDE Software
  This is the default widget style for KDE's Plasma desktop.  This
  build has the plugin for with Qt 4.
+ .
+ This package is part of the Breeze theme module.
+
+Package: kwin-style-breeze
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: KWin Breeze Style
+ This is the Breeze window manager style for the KDE Plasma 5 desktop.
  .
  This package is part of the Breeze theme module.
 
