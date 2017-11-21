@@ -118,7 +118,7 @@ Description: Dark Breeze look-and-feel for Plasma
 
 Package: breeze-dbg
 Section: debug
-Priority: extra
+Priority: optional
 Architecture: any
 Recommends: qtbase5-dbg
 Depends: breeze (= ${binary:Version}) | kwin-style-breeze (= ${binary:Version}) | kde-style-breeze (= ${binary:Version}) | kde-style-breeze-qt4 (= ${binary:Version}) | qml-module-qtquick-controls-styles-breeze (= ${binary:Version}),
@@ -127,3 +127,4 @@ Description: debugging symbols for the Breeze desktop theme
  The Breeze desktop theme is used by Plasma and other KDE Software.
  .
  This package contains the debugging symbols.
+
