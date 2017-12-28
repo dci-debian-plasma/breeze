@@ -2,23 +2,24 @@
 
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
-include /usr/share/pkg-kde-tools/qt-kde-team/3/debian-qt-kde.mk
+%:
+	dh $@ --with kf5,pkgkde_symbolshelper --buildsystem kf5
 
 override_dh_auto_clean:
-	$(overridden_command)
+	dh_auto_clean
 	rm -rf $(CURDIR)/build-qt4
 
 override_dh_auto_configure:
-	$(overridden_command)
-	$(overridden_command) --builddirectory=$(CURDIR)/build-qt4 -- -DUSE_KDE4=true
+	dh_auto_configure
+	dh_auto_configure --builddirectory=$(CURDIR)/build-qt4 -- -DUSE_KDE4=true
 
 override_dh_auto_build:
-	$(overridden_command)
-	$(overridden_command) --builddirectory=$(CURDIR)/build-qt4
+	dh_auto_build
+	dh_auto_build --builddirectory=$(CURDIR)/build-qt4
 
 override_dh_auto_install:
-	$(overridden_command)
-	$(overridden_command) --builddirectory=$(CURDIR)/build-qt4
+	dh_auto_install
+	dh_auto_install --builddirectory=$(CURDIR)/build-qt4
 	mkdir -p $(CURDIR)/debian/kde-style-breeze-qt4/usr/lib/$(DEB_HOST_MULTIARCH)/qt4/plugins/styles/
 	ln -s /usr/lib/kde4/plugins/styles/breeze.so $(CURDIR)/debian/kde-style-breeze-qt4/usr/lib/$(DEB_HOST_MULTIARCH)/qt4/plugins/styles/
 
@@ -27,7 +28,7 @@ override_dh_install:
 	# fall back to a cursor theme from the 90's
 	CURDIR=$(CURDIR) $(CURDIR)/debian/wrapperthemes.sh breeze_cursors \
 	                                                   Breeze_Snow
-	$(overridden_command)
+	dh_install
 
 override_dh_strip:
-	$(overridden_command) --dbgsym-migration='breeze-dbg (<= 4:5.5.5-1~~)'
+	dh_strip --dbgsym-migration='breeze-dbg (<= 4:5.5.5-1~~)'
