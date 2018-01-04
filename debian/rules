@@ -3,7 +3,7 @@
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 %:
-	dh $@ --with kf5,pkgkde_symbolshelper --buildsystem kf5
+	dh $@ --with kf5,pkgkde_symbolshelper --buildsystem kf5 --without build_stamp
 
 override_dh_auto_clean:
 	dh_auto_clean
